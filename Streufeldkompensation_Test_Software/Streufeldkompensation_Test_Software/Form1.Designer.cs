@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.cb_Ports = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.bt_OpenPort = new System.Windows.Forms.Button();
@@ -40,6 +41,8 @@
             this.bt_send = new System.Windows.Forms.Button();
             this.nUD_V = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_CH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_V)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +52,7 @@
             this.cb_Ports.FormattingEnabled = true;
             this.cb_Ports.Location = new System.Drawing.Point(98, 19);
             this.cb_Ports.Name = "cb_Ports";
-            this.cb_Ports.Size = new System.Drawing.Size(91, 21);
+            this.cb_Ports.Size = new System.Drawing.Size(63, 21);
             this.cb_Ports.TabIndex = 0;
             // 
             // label1
@@ -63,7 +66,7 @@
             // 
             // bt_OpenPort
             // 
-            this.bt_OpenPort.Location = new System.Drawing.Point(195, 17);
+            this.bt_OpenPort.Location = new System.Drawing.Point(179, 17);
             this.bt_OpenPort.Name = "bt_OpenPort";
             this.bt_OpenPort.Size = new System.Drawing.Size(75, 23);
             this.bt_OpenPort.TabIndex = 2;
@@ -73,7 +76,7 @@
             // 
             // bt_ClosePort
             // 
-            this.bt_ClosePort.Location = new System.Drawing.Point(287, 17);
+            this.bt_ClosePort.Location = new System.Drawing.Point(179, 17);
             this.bt_ClosePort.Name = "bt_ClosePort";
             this.bt_ClosePort.Size = new System.Drawing.Size(75, 23);
             this.bt_ClosePort.TabIndex = 3;
@@ -86,12 +89,12 @@
             // 
             this.textbox.BackColor = System.Drawing.SystemColors.Window;
             this.textbox.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox.Location = new System.Drawing.Point(31, 111);
+            this.textbox.Location = new System.Drawing.Point(12, 97);
             this.textbox.Multiline = true;
             this.textbox.Name = "textbox";
             this.textbox.ReadOnly = true;
             this.textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textbox.Size = new System.Drawing.Size(331, 141);
+            this.textbox.Size = new System.Drawing.Size(426, 162);
             this.textbox.TabIndex = 21;
             // 
             // nUD_CH
@@ -151,9 +154,9 @@
             // 
             // bt_send
             // 
-            this.bt_send.Location = new System.Drawing.Point(287, 49);
+            this.bt_send.Location = new System.Drawing.Point(298, 57);
             this.bt_send.Name = "bt_send";
-            this.bt_send.Size = new System.Drawing.Size(75, 42);
+            this.bt_send.Size = new System.Drawing.Size(89, 27);
             this.bt_send.TabIndex = 26;
             this.bt_send.Text = "Send";
             this.bt_send.UseVisualStyleBackColor = true;
@@ -167,7 +170,7 @@
             0,
             0,
             65536});
-            this.nUD_V.Location = new System.Drawing.Point(195, 60);
+            this.nUD_V.Location = new System.Drawing.Point(215, 60);
             this.nUD_V.Maximum = new decimal(new int[] {
             1,
             0,
@@ -190,18 +193,41 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(267, 64);
+            this.label3.Location = new System.Drawing.Point(195, 64);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(14, 13);
+            this.label3.Size = new System.Drawing.Size(17, 13);
             this.label3.TabIndex = 28;
-            this.label3.Text = "V";
+            this.label3.Text = "V:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(393, 57);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(43, 27);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "Help";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(95, 273);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(343, 13);
+            this.linkLabel1.TabIndex = 30;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "https://github.com/Krypt0pr0xy/Streufeldkompensation_Test_Software";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(383, 272);
+            this.ClientSize = new System.Drawing.Size(448, 295);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.nUD_V);
             this.Controls.Add(this.bt_send);
@@ -215,6 +241,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cb_Ports);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Streufeldkompensation Test Software";
@@ -239,6 +266,8 @@
         private System.Windows.Forms.Button bt_send;
         private System.Windows.Forms.NumericUpDown nUD_V;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

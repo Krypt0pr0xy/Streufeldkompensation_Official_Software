@@ -74,6 +74,7 @@ namespace Streufeldkompensation_Test_Software
                 textbox.SelectionStart = textbox.Text.Length;
                 textbox.ScrollToCaret();
             }
+            this.WindowState = FormWindowState.Normal;
         }
 
         private void bt_ClosePort_Click(object sender, EventArgs e)
@@ -121,6 +122,25 @@ namespace Streufeldkompensation_Test_Software
                 textbox.SelectionStart = textbox.Text.Length;
                 textbox.ScrollToCaret();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (sport.IsOpen)
+            {
+                sport.Write("Help=\r");
+            }
+            else
+            {
+                textbox.Text += "Please Connect First\r\n";
+                textbox.SelectionStart = textbox.Text.Length;
+                textbox.ScrollToCaret();
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(linkLabel1.Text);
         }
     }
 }
