@@ -47,15 +47,15 @@
             // cb_Ports
             // 
             this.cb_Ports.FormattingEnabled = true;
-            this.cb_Ports.Location = new System.Drawing.Point(31, 40);
+            this.cb_Ports.Location = new System.Drawing.Point(98, 19);
             this.cb_Ports.Name = "cb_Ports";
-            this.cb_Ports.Size = new System.Drawing.Size(119, 21);
+            this.cb_Ports.Size = new System.Drawing.Size(91, 21);
             this.cb_Ports.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 24);
+            this.label1.Location = new System.Drawing.Point(28, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 1;
@@ -63,7 +63,7 @@
             // 
             // bt_OpenPort
             // 
-            this.bt_OpenPort.Location = new System.Drawing.Point(156, 38);
+            this.bt_OpenPort.Location = new System.Drawing.Point(195, 17);
             this.bt_OpenPort.Name = "bt_OpenPort";
             this.bt_OpenPort.Size = new System.Drawing.Size(75, 23);
             this.bt_OpenPort.TabIndex = 2;
@@ -73,7 +73,7 @@
             // 
             // bt_ClosePort
             // 
-            this.bt_ClosePort.Location = new System.Drawing.Point(156, 38);
+            this.bt_ClosePort.Location = new System.Drawing.Point(287, 17);
             this.bt_ClosePort.Name = "bt_ClosePort";
             this.bt_ClosePort.Size = new System.Drawing.Size(75, 23);
             this.bt_ClosePort.TabIndex = 3;
@@ -86,7 +86,7 @@
             // 
             this.textbox.BackColor = System.Drawing.SystemColors.Window;
             this.textbox.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox.Location = new System.Drawing.Point(31, 135);
+            this.textbox.Location = new System.Drawing.Point(31, 111);
             this.textbox.Multiline = true;
             this.textbox.Name = "textbox";
             this.textbox.ReadOnly = true;
@@ -96,7 +96,7 @@
             // 
             // nUD_CH
             // 
-            this.nUD_CH.Location = new System.Drawing.Point(59, 84);
+            this.nUD_CH.Location = new System.Drawing.Point(59, 60);
             this.nUD_CH.Maximum = new decimal(new int[] {
             8,
             0,
@@ -119,7 +119,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 86);
+            this.label2.Location = new System.Drawing.Point(28, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(25, 13);
             this.label2.TabIndex = 23;
@@ -129,7 +129,7 @@
             // 
             this.rb_1V.AutoSize = true;
             this.rb_1V.Checked = true;
-            this.rb_1V.Location = new System.Drawing.Point(117, 73);
+            this.rb_1V.Location = new System.Drawing.Point(117, 49);
             this.rb_1V.Name = "rb_1V";
             this.rb_1V.Size = new System.Drawing.Size(55, 17);
             this.rb_1V.TabIndex = 24;
@@ -141,7 +141,7 @@
             // rb_10V
             // 
             this.rb_10V.AutoSize = true;
-            this.rb_10V.Location = new System.Drawing.Point(117, 96);
+            this.rb_10V.Location = new System.Drawing.Point(117, 72);
             this.rb_10V.Name = "rb_10V";
             this.rb_10V.Size = new System.Drawing.Size(61, 17);
             this.rb_10V.TabIndex = 25;
@@ -151,7 +151,7 @@
             // 
             // bt_send
             // 
-            this.bt_send.Location = new System.Drawing.Point(287, 73);
+            this.bt_send.Location = new System.Drawing.Point(287, 49);
             this.bt_send.Name = "bt_send";
             this.bt_send.Size = new System.Drawing.Size(75, 42);
             this.bt_send.TabIndex = 26;
@@ -167,7 +167,7 @@
             0,
             0,
             65536});
-            this.nUD_V.Location = new System.Drawing.Point(195, 84);
+            this.nUD_V.Location = new System.Drawing.Point(195, 60);
             this.nUD_V.Maximum = new decimal(new int[] {
             1,
             0,
@@ -190,7 +190,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(267, 88);
+            this.label3.Location = new System.Drawing.Point(267, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(14, 13);
             this.label3.TabIndex = 28;
@@ -201,7 +201,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(383, 293);
+            this.ClientSize = new System.Drawing.Size(383, 272);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.nUD_V);
             this.Controls.Add(this.bt_send);
