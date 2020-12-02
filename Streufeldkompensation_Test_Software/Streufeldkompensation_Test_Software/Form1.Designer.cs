@@ -41,8 +41,9 @@
             this.bt_send = new System.Windows.Forms.Button();
             this.nUD_V = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.b_help = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.l_version = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_CH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_V)).BeginInit();
             this.SuspendLayout();
@@ -199,15 +200,15 @@
             this.label3.TabIndex = 28;
             this.label3.Text = "V:";
             // 
-            // button1
+            // b_help
             // 
-            this.button1.Location = new System.Drawing.Point(393, 57);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(43, 27);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Help";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.b_help.Location = new System.Drawing.Point(393, 57);
+            this.b_help.Name = "b_help";
+            this.b_help.Size = new System.Drawing.Size(43, 27);
+            this.b_help.TabIndex = 29;
+            this.b_help.Text = "Help";
+            this.b_help.UseVisualStyleBackColor = true;
+            this.b_help.Click += new System.EventHandler(this.button1_Click);
             // 
             // linkLabel1
             // 
@@ -220,14 +221,24 @@
             this.linkLabel1.Text = "https://github.com/Krypt0pr0xy/Streufeldkompensation_Test_Software";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // l_version
+            // 
+            this.l_version.AutoSize = true;
+            this.l_version.Location = new System.Drawing.Point(13, 273);
+            this.l_version.Name = "l_version";
+            this.l_version.Size = new System.Drawing.Size(45, 13);
+            this.l_version.TabIndex = 31;
+            this.l_version.Text = "Version:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(448, 295);
+            this.Controls.Add(this.l_version);
             this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.b_help);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.nUD_V);
             this.Controls.Add(this.bt_send);
@@ -266,8 +277,9 @@
         private System.Windows.Forms.Button bt_send;
         private System.Windows.Forms.NumericUpDown nUD_V;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button b_help;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label l_version;
     }
 }
 
