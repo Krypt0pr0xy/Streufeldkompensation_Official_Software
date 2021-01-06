@@ -44,6 +44,7 @@
             this.b_help = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.l_version = new System.Windows.Forms.Label();
+            this.bt_refresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_CH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_V)).BeginInit();
             this.SuspendLayout();
@@ -95,7 +96,7 @@
             this.textbox.Name = "textbox";
             this.textbox.ReadOnly = true;
             this.textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textbox.Size = new System.Drawing.Size(426, 162);
+            this.textbox.Size = new System.Drawing.Size(424, 209);
             this.textbox.TabIndex = 21;
             // 
             // nUD_CH
@@ -165,13 +166,13 @@
             // 
             // nUD_V
             // 
-            this.nUD_V.DecimalPlaces = 5;
+            this.nUD_V.DecimalPlaces = 8;
             this.nUD_V.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.nUD_V.Location = new System.Drawing.Point(215, 60);
+            this.nUD_V.Location = new System.Drawing.Point(201, 62);
             this.nUD_V.Maximum = new decimal(new int[] {
             1,
             0,
@@ -183,18 +184,19 @@
             0,
             -2147483648});
             this.nUD_V.Name = "nUD_V";
-            this.nUD_V.Size = new System.Drawing.Size(66, 20);
+            this.nUD_V.Size = new System.Drawing.Size(91, 20);
             this.nUD_V.TabIndex = 27;
             this.nUD_V.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.nUD_V.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nUD_V_KeyPress);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(195, 64);
+            this.label3.Location = new System.Drawing.Point(178, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 13);
             this.label3.TabIndex = 28;
@@ -208,12 +210,12 @@
             this.b_help.TabIndex = 29;
             this.b_help.Text = "Help";
             this.b_help.UseVisualStyleBackColor = true;
-            this.b_help.Click += new System.EventHandler(this.button1_Click);
+            this.b_help.Click += new System.EventHandler(this.b_help_Click);
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(95, 273);
+            this.linkLabel1.Location = new System.Drawing.Point(93, 321);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(343, 13);
             this.linkLabel1.TabIndex = 30;
@@ -224,18 +226,29 @@
             // l_version
             // 
             this.l_version.AutoSize = true;
-            this.l_version.Location = new System.Drawing.Point(13, 273);
+            this.l_version.Location = new System.Drawing.Point(11, 321);
             this.l_version.Name = "l_version";
             this.l_version.Size = new System.Drawing.Size(45, 13);
             this.l_version.TabIndex = 31;
             this.l_version.Text = "Version:";
+            // 
+            // bt_refresh
+            // 
+            this.bt_refresh.Location = new System.Drawing.Point(260, 17);
+            this.bt_refresh.Name = "bt_refresh";
+            this.bt_refresh.Size = new System.Drawing.Size(53, 23);
+            this.bt_refresh.TabIndex = 32;
+            this.bt_refresh.Text = "Refresh";
+            this.bt_refresh.UseVisualStyleBackColor = true;
+            this.bt_refresh.Click += new System.EventHandler(this.bt_refresh_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(448, 295);
+            this.ClientSize = new System.Drawing.Size(447, 343);
+            this.Controls.Add(this.bt_refresh);
             this.Controls.Add(this.l_version);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.b_help);
@@ -255,6 +268,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Streufeldkompensation Test Software";
             ((System.ComponentModel.ISupportInitialize)(this.nUD_CH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_V)).EndInit();
@@ -280,6 +294,7 @@
         private System.Windows.Forms.Button b_help;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label l_version;
+        private System.Windows.Forms.Button bt_refresh;
     }
 }
 

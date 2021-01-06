@@ -8,24 +8,30 @@ namespace Streufeldkompensation_Test_Software
 {
     public partial class Form1 : Form
     {
-        
-        SerialPort sport = new SerialPort();
+        SerialPort sport = new SerialPort();//New class as Serialport
 
         bool connected = false;
 
         public Form1()//init Form
         {
             InitializeComponent();
-            l_version.Text = "Version: 2";//Flag for version
+            l_version.Text = "Version: 3";//Flag for version
             CheckForIllegalCrossThreadCalls = false;//pragma deactivate
-            textbox.ForeColor = Color.Black;
+            textbox.ForeColor = Color.Black;//set Text Color to Black
             foreach (String s in SerialPort.GetPortNames())//listing Port names
             {
-                cb_Ports.Items.Add(s);
+                cb_Ports.Items.Add(s);//adding Ports to combobox
             }
-            
+
         }
 
+        private void adding_text_to_textbox(String input)//Funtion for adding text to the end of the text box
+        {
+            textbox.Text += input;//adding the input
+            textbox.Text += "\r\n";//adding Carriage Return and Line Feed ( Used as a new line character in Windows)
+            textbox.SelectionStart = textbox.Text.Length;//dynamic size
+            textbox.ScrollToCaret();//scroll to the end
+        }
 
         private void bt_OpenPort_Click(object sender, EventArgs e)//connect to a COM port
         {
@@ -39,20 +45,14 @@ namespace Streufeldkompensation_Test_Software
                     if (sport.IsOpen)//check if is already open
                     {
                         connected = true;
-                        bt_ClosePort.Visible = true;
-                        bt_OpenPort.Visible = false;
-                        sport.DataReceived += new SerialDataReceivedEventHandler(sport_DataReceived);
-                        textbox.Text += "Connected\r\n";
-                        textbox.SelectionStart = textbox.Text.Length;
-                        textbox.ScrollToCaret();
+                        bt_ClosePort.Visible = true;//Button Close Port set visible
+                        bt_OpenPort.Visible = false;//Button Open Port set invisible
+                        sport.DataReceived += new SerialDataReceivedEventHandler(sport_DataReceived);//adding a Data receive handler
+                        adding_text_to_textbox("Connected");//Text output for the textbox
                     }
                 }
-                catch (Exception)//check for errors
-                {
-                    textbox.Text += "No Port is Selected\r\n"; 
-                    textbox.SelectionStart = textbox.Text.Length;
-                    textbox.ScrollToCaret();
-                }
+                catch (Exception ex)//check for errors
+                {MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);}
 
             }
         }
@@ -60,30 +60,38 @@ namespace Streufeldkompensation_Test_Software
         private void sport_DataReceived(object sender, SerialDataReceivedEventArgs e)//Interuptrutine for receiving data
         {
             string data = "";
-
-            while (sport.BytesToRead > 0)//ready data
+            try
             {
-                data = sport.ReadExisting();
-                data = data.Replace("\0", string.Empty);
-                textbox.Text += data;//add to text box
-                textbox.SelectionStart = textbox.Text.Length;
-                textbox.ScrollToCaret();
+                while (sport.BytesToRead > 0)//ready data
+                {
+                    data = sport.ReadExisting();//Read until end
+                    data = data.Replace("\0", string.Empty);//Take all
+                    textbox.Text += data;//add to text box
+                    textbox.SelectionStart = textbox.Text.Length;//dynamic size
+                    textbox.ScrollToCaret();//scroll to the end
+                }
             }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
             this.WindowState = FormWindowState.Normal;
-        }
+         }
 
         private void bt_ClosePort_Click(object sender, EventArgs e)//close connection to COM Port
         {
-            if(sport.IsOpen)//check if is alreasy open
+            try
             {
-                sport.Close();
-                connected = false;
-                bt_ClosePort.Visible = false;
-                bt_OpenPort.Visible = true;
-                textbox.Text += "Disconnected\r\n";
-                textbox.SelectionStart = textbox.Text.Length;
-                textbox.ScrollToCaret();
+                if (sport.IsOpen)//check if is alreasy open
+                {
+                    sport.Close();//Close it
+                    connected = false;//delete Flag 
+                    bt_ClosePort.Visible = false;//Button Close Port set invisible
+                    bt_OpenPort.Visible = true;//Button Open Port set visible
+                    adding_text_to_textbox("Disconnected");//Text output for the textbox
+                }
             }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void rb_10V_CheckedChanged(object sender, EventArgs e)//limitate the range
@@ -100,42 +108,89 @@ namespace Streufeldkompensation_Test_Software
 
         private void bt_send_Click(object sender, EventArgs e)//Send Button click event
         {
-            float voltage = (float)nUD_V.Value;
+            double voltage = (double)nUD_V.Value;
+            //Check if input is valid
             int output = 0;
-            if (rb_1V.Checked == true)
-            {output = 1;}
-            else
-            {output = 10;}
-            
-            if (sport.IsOpen)
+            if (rb_1V.Checked == true){output = 1;}
+            else{output = 10;}
+
+            try
             {
-                sport.Write("SET_CH" + nUD_CH.Value.ToString() + "_" + voltage.ToString() + "_OUT" + output.ToString() + "\r");//sending to serial Port
+                //Send data
+                if (sport.IsOpen)
+                {
+                    sport.Write("SET_CH" + nUD_CH.Value.ToString() + "_" + voltage.ToString() + "_OUT" + output.ToString() + "\r");//sending to serial Port
+                }
+                else
+                {
+                    adding_text_to_textbox("Not Connected");//Text output for the textbox
+                }
             }
-            else
-            {
-                textbox.Text += "Not Connected\r\n";
-                textbox.SelectionStart = textbox.Text.Length;
-                textbox.ScrollToCaret();
-            }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
-        private void button1_Click(object sender, EventArgs e)//button help 
+        private void b_help_Click(object sender, EventArgs e)//button help 
         {
-            if (sport.IsOpen)
+            try
             {
-                sport.Write("Help_\r");//sending Help
+                if (sport.IsOpen)//Check if Port is Open
+                {
+                    sport.Write("Help_\r");//sending Help
+                }
+                else
+                {
+                    adding_text_to_textbox("Please Connect First");//Text output for the textbox
+                }
             }
-            else
-            {
-                textbox.Text += "Please Connect First\r\n";
-                textbox.SelectionStart = textbox.Text.Length;
-                textbox.ScrollToCaret();
-            }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)//Hyper link
         {
-            System.Diagnostics.Process.Start(linkLabel1.Text);
+            try
+            {
+                System.Diagnostics.Process.Start(linkLabel1.Text);//Open Brower with the hyperlink
+            }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void bt_refresh_Click(object sender, EventArgs e)//Refresh Button
+        {
+            cb_Ports.Items.Clear();//Deleting old Items from Combobox
+            foreach (String s in SerialPort.GetPortNames())//listing Port names
+            {
+                cb_Ports.Items.Add(s);//adding Ports to combobox
+            }
+        }
+
+        private void nUD_V_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)//Check if Button Enter on a Keyboard is press do same as Send
+            {
+                double voltage = (double)nUD_V.Value;
+                //Check if input is valid
+                int output = 0;
+                if (rb_1V.Checked == true) { output = 1; }
+                else { output = 10; }
+
+                try
+                {
+                    //Send data
+                    if (sport.IsOpen)
+                    {
+                        sport.Write("SET_CH" + nUD_CH.Value.ToString() + "_" + voltage.ToString() + "_OUT" + output.ToString() + "\r");//sending to serial Port
+                    }
+                    else
+                    {
+                        adding_text_to_textbox("Not Connected");//Text output for the textbox
+                    }
+                }
+                catch (Exception ex)//check for errors
+                { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            }
         }
     }
 }
