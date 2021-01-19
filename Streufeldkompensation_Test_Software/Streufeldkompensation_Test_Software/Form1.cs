@@ -119,7 +119,7 @@ namespace Streufeldkompensation_Test_Software
                 //Send data
                 if (sport.IsOpen)
                 {
-                    sport.Write("SET_CH" + nUD_CH.Value.ToString() + "_" + voltage.ToString() + "_OUT" + output.ToString() + "\r");//sending to serial Port
+                    sport.Write("SET_CH" + nUD_CH.Value.ToString() + "_" + voltage.ToString("F99").TrimEnd('0') + "_OUT" + output.ToString() + "\r");//sending to serial Port without scientific spelling 
                 }
                 else
                 {
@@ -181,7 +181,7 @@ namespace Streufeldkompensation_Test_Software
                     //Send data
                     if (sport.IsOpen)
                     {
-                        sport.Write("SET_CH" + nUD_CH.Value.ToString() + "_" + voltage.ToString() + "_OUT" + output.ToString() + "\r");//sending to serial Port
+                        sport.Write("SET_CH" + nUD_CH.Value.ToString() + "_" + voltage.ToString("F99").TrimEnd('0') + "_OUT" + output.ToString() + "\r");//sending to serial Port without scientific spelling 
                     }
                     else
                     {
