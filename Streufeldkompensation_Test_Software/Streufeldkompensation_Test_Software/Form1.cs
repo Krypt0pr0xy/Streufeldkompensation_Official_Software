@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO.Ports;
-
+using System.Threading;
 
 namespace Streufeldkompensation_Test_Software
 {
@@ -12,16 +12,44 @@ namespace Streufeldkompensation_Test_Software
 
         bool connected = false;
 
+        int panelWidth;
+        bool Hidden;
+
         public Form1()//init Form
         {
             InitializeComponent();
-            l_version.Text = "Version: 3";//Flag for version
+            l_version.Text = "Version: 4";//Flag for version
             CheckForIllegalCrossThreadCalls = false;//pragma deactivate
             textbox.ForeColor = Color.Black;//set Text Color to Black
             foreach (String s in SerialPort.GetPortNames())//listing Port names
             {
                 cb_Ports.Items.Add(s);//adding Ports to combobox
             }
+            panelWidth = panel_slider.Width;
+            Hidden = true;
+
+            while(panel_slider.Width >= 30)
+            {
+                panel_slider.Width = panel_slider.Width - 10;
+                this.Width -= 10;
+                this.Refresh();
+            }
+
+
+            pb_Button1_OFF.Visible = false;
+            pb_Button1_ON.Visible = false;
+            pb_Button2_OFF.Visible = false;
+            pb_Button2_ON.Visible = false;
+            pb_Button3_OFF.Visible = false;
+            pb_Button3_ON.Visible = false;
+            pb_Button4_OFF.Visible = false;
+            pb_Button4_ON.Visible = false;
+
+
+            pb_Button1_Output.Visible = false;
+            pb_Button2_Output.Visible = false;
+            pb_Button3_Output.Visible = false;
+            pb_Button4_Output.Visible = false;
 
         }
 
@@ -66,6 +94,18 @@ namespace Streufeldkompensation_Test_Software
                 {
                     data = sport.ReadExisting();//Read until end
                     data = data.Replace("\0", string.Empty);//Take all
+
+                    if (data == "P28=OFF\r\n") { pb1_ON.Visible = false; pb1_OFF.Visible = true; }
+                    if (data == "P28=ON\r\n") { pb1_ON.Visible = true; pb1_OFF.Visible = false; }
+
+                    if (data == "P29=OFF\r\n") { pb2_ON.Visible = false; pb2_OFF.Visible = true; }
+                    if (data == "P29=ON\r\n") { pb2_ON.Visible = true; pb2_OFF.Visible = false; }
+
+                    if (data == "P30=OFF\r\n") { pb3_ON.Visible = false; pb3_OFF.Visible = true; }
+                    if (data == "P30=ON\r\n") { pb3_ON.Visible = true; pb3_OFF.Visible = false; }
+
+                    if (data == "P31=OFF\r\n") { pb4_ON.Visible = false; pb4_OFF.Visible = true; }
+                    if (data == "P31=ON\r\n") { pb4_ON.Visible = true; pb4_OFF.Visible = false; }
                     textbox.Text += data;//add to text box
                     textbox.SelectionStart = textbox.Text.Length;//dynamic size
                     textbox.ScrollToCaret();//scroll to the end
@@ -175,7 +215,6 @@ namespace Streufeldkompensation_Test_Software
                 int output = 0;
                 if (rb_1V.Checked == true) { output = 1; }
                 else { output = 10; }
-
                 try
                 {
                     //Send data
@@ -192,5 +231,333 @@ namespace Streufeldkompensation_Test_Software
                 { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
         }
+
+       
+        private void button_slide_Click(object sender, EventArgs e)
+        {
+            timer_slider.Start();//start Timer
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (Hidden)//check if flag Hidden is set
+            {
+                panel_slider.Width = panel_slider.Width + 5;//Move panel
+                this.Width += 5;//Move main panel
+                if (panel_slider.Width >= panelWidth)//check if panel is bigger than main panel with
+                {
+                    timer_slider.Stop();//stop Timer
+                    button_slide.Text = "<";//change Text of button
+                    Hidden = false;//set to Hidden false
+                    this.Refresh();//Refresh if  it is'nt
+                }
+            }
+            else
+            {
+                panel_slider.Width = panel_slider.Width - 5;//Move panel
+                this.Width -= 5;//Move main panel
+                if (panel_slider.Width <= 0)//check if panel is smaller than zero main panel with
+                {
+                    timer_slider.Stop();//stop Timer
+                    button_slide.Text = ">";//change Text of button
+                    Hidden = true;//set to Hidden true
+                    this.Refresh();//Refresh if  it is'nt
+                }
+            }
+        }
+
+
+        //__________________________________________________________________
+        private void pb_Button1_ON_Click(object sender, EventArgs e)
+        {
+            pb_Button1_OFF.Visible = true;
+            pb_Button1_ON.Visible = false;
+            try//Try to send PORTSET_28_LOW_\r
+            {
+                if (sport.IsOpen)//check if serial port is open
+                { sport.Write("PORTSET_28_LOW_\r"); }
+                else
+                { adding_text_to_textbox("Not Connected"); }
+            }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void pb_Button1_OFF_Click(object sender, EventArgs e)
+        {
+            pb_Button1_OFF.Visible = false;
+            pb_Button1_ON.Visible = true;
+            try//Try to send PORTSET_28_HIGH_\r
+            {   if (sport.IsOpen)//check if serial port is open
+                { sport.Write("PORTSET_28_HIGH_\r");}
+                else
+                {adding_text_to_textbox("Not Connected");}
+            }catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+        //__________________________________________________________________
+        private void pb_Button2_ON_Click(object sender, EventArgs e)
+        {
+            pb_Button2_OFF.Visible = true;
+            pb_Button2_ON.Visible = false;
+            try
+            {
+                if (sport.IsOpen)//check if serial port is open
+                { sport.Write("PORTSET_29_LOW_\r"); }
+                else
+                { adding_text_to_textbox("Not Connected"); }
+            }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void pb_Button2_OFF_Click(object sender, EventArgs e)
+        {
+            pb_Button2_OFF.Visible = false;
+            pb_Button2_ON.Visible = true;
+            try
+            {
+                if (sport.IsOpen)//check if serial port is open
+                { sport.Write("PORTSET_29_HIGH_\r"); }
+                else
+                { adding_text_to_textbox("Not Connected"); }
+            }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        //__________________________________________________________________
+        private void pb_Button3_ON_Click(object sender, EventArgs e)
+        {
+            pb_Button3_OFF.Visible = true;
+            pb_Button3_ON.Visible = false;
+            try
+            {
+                if (sport.IsOpen)//check if serial port is open
+                { sport.Write("PORTSET_30_LOW_\r"); }
+                else
+                { adding_text_to_textbox("Not Connected"); }
+            }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+        private void pb_Button3_OFF_Click(object sender, EventArgs e)
+        {
+            pb_Button3_OFF.Visible = false;
+            pb_Button3_ON.Visible = true;
+            try
+            {
+                if (sport.IsOpen)//check if serial port is open
+                { sport.Write("PORTSET_30_HIGH_\r"); }
+                else
+                { adding_text_to_textbox("Not Connected"); }
+            }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+        //__________________________________________________________________
+        private void pb_Button4_ON_Click(object sender, EventArgs e)
+        {
+            pb_Button4_OFF.Visible = true;
+            pb_Button4_ON.Visible = false;
+            try
+            {
+                if (sport.IsOpen)//check if serial port is open
+                { sport.Write("PORTSET_31_LOW_\r"); }
+                else
+                { adding_text_to_textbox("Not Connected"); }
+            }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void pb_Button4_OFF_Click(object sender, EventArgs e)
+        {
+            pb_Button4_OFF.Visible = false;
+            pb_Button4_ON.Visible = true;
+            try
+            {
+                if (sport.IsOpen)//check if serial port is open
+                { sport.Write("PORTSET_31_HIGH_\r"); }
+                else
+                { adding_text_to_textbox("Not Connected"); }
+            }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+        //__________________________________________________________________
+
+
+
+
+
+        private void pb_Button1_Input_Click(object sender, EventArgs e)
+        {
+            pb_Button1_Input.Visible = false;
+            pb_Button1_Output.Visible = true;
+
+            pb_Button1_ON.Visible = true;
+            pb_Button1_OFF.Visible = true;
+
+            pb1_OFF.Visible = false;
+            pb1_ON.Visible = false;
+        }
+
+        private void pb_Button1_Output_Click(object sender, EventArgs e)
+        {
+            pb_Button1_Input.Visible = true;
+            pb_Button1_Output.Visible = false;
+
+            pb_Button1_ON.Visible = false;
+            pb_Button1_OFF.Visible = false;
+
+            pb1_OFF.Visible = true;
+            pb1_ON.Visible = true;
+        }
+
+        private void pb_Button2_Input_Click(object sender, EventArgs e)
+        {
+            pb_Button2_Input.Visible = false;
+            pb_Button2_Output.Visible = true;
+
+            pb_Button2_ON.Visible = true;
+            pb_Button2_OFF.Visible = true;
+
+            pb2_OFF.Visible = false;
+            pb2_ON.Visible = false;
+        }
+
+        private void pb_Button2_Output_Click(object sender, EventArgs e)
+        {
+            pb_Button2_Input.Visible = true;
+            pb_Button2_Output.Visible = false;
+
+            pb_Button2_ON.Visible = false;
+            pb_Button2_OFF.Visible = false;
+
+            pb2_OFF.Visible = true;
+            pb2_ON.Visible = true;
+        }
+
+        private void pb_Button3_Input_Click(object sender, EventArgs e)
+        {
+            pb_Button3_Input.Visible = false;
+            pb_Button3_Output.Visible = true;
+
+            pb_Button3_ON.Visible = true;
+            pb_Button3_OFF.Visible = true;
+
+            pb3_OFF.Visible = false;
+            pb3_ON.Visible = false;
+        }
+
+        private void pb_Button3_Output_Click(object sender, EventArgs e)
+        {
+            pb_Button3_Input.Visible = true;
+            pb_Button3_Output.Visible = false;
+
+            pb_Button3_ON.Visible = false;
+            pb_Button3_OFF.Visible = false;
+
+            pb3_OFF.Visible = true;
+            pb3_ON.Visible = true;
+        }
+
+        private void pb_Button4_Input_Click(object sender, EventArgs e)
+        {
+            pb_Button4_Input.Visible = false;
+            pb_Button4_Output.Visible = true;
+
+            pb_Button4_ON.Visible = true;
+            pb_Button4_OFF.Visible = true;
+
+            pb4_OFF.Visible = false;
+            pb4_ON.Visible = false;
+        }
+
+        private void pb_Button4_Output_Click(object sender, EventArgs e)
+        {
+            pb_Button4_Input.Visible = true;
+            pb_Button4_Output.Visible = false;
+
+            pb_Button4_ON.Visible = false;
+            pb_Button4_OFF.Visible = false;
+
+            pb4_OFF.Visible = true;
+            pb4_ON.Visible = true;
+        }
+
+        private void pb_download_Click(object sender, EventArgs e)
+        {
+            progressBar_Download.Value = 0;
+            try
+            {
+                if (sport.IsOpen)//Check if Port is Open
+                {
+                    if (pb_Button1_Input.Visible)
+                    {
+                        sport.Write("PORTCONFIGURE_WRITE_28_INPUT\r");
+                        Thread.Sleep(500);
+                        progressBar_Download.Value = 25;
+                    }
+                    else
+                    {
+                        sport.Write("PORTCONFIGURE_WRITE_28_OUTPUT\r");
+                        Thread.Sleep(500);
+                        progressBar_Download.Value = 25;
+                    }
+                    //_______________________________________________
+                    if (pb_Button2_Input.Visible)
+                    {
+                        sport.Write("PORTCONFIGURE_WRITE_29_INPUT\r");
+                        Thread.Sleep(500);
+                        progressBar_Download.Value = 50;
+                    }
+                    else
+                    {
+                        sport.Write("PORTCONFIGURE_WRITE_29_OUTPUT\r");
+                        Thread.Sleep(500);
+                        progressBar_Download.Value = 50;
+                    }
+                    //_______________________________________________
+                    if (pb_Button3_Input.Visible)
+                    {
+                        sport.Write("PORTCONFIGURE_WRITE_30_INPUT\r");
+                        Thread.Sleep(500);
+                        progressBar_Download.Value = 75;
+                    }
+                    else
+                    {
+                        sport.Write("PORTCONFIGURE_WRITE_30_OUTPUT\r");
+                        Thread.Sleep(500);
+                        progressBar_Download.Value = 75;
+                    }
+                    //_______________________________________________
+                    if (pb_Button4_Input.Visible)
+                    {
+                        sport.Write("PORTCONFIGURE_WRITE_31_INPUT\r");
+                        Thread.Sleep(500);
+                        progressBar_Download.Value = 100;
+                    }
+                    else
+                    {
+                        sport.Write("PORTCONFIGURE_WRITE_31_OUTPUT\r");
+                        Thread.Sleep(500);
+                        progressBar_Download.Value = 100;
+                    }
+
+                    sport.Write("PORTCONFIGURE_SET_\r"); 
+                    //_______________________________________________
+                }
+                else
+                {
+                    adding_text_to_textbox("Please Connect First");//Text output for the textbox
+                }
+            }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+
     }
 }

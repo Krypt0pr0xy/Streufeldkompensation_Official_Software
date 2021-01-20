@@ -28,7 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.pb1_OFF = new System.Windows.Forms.PictureBox();
+            this.pb2_OFF = new System.Windows.Forms.PictureBox();
+            this.pb1_ON = new System.Windows.Forms.PictureBox();
+            this.pb2_ON = new System.Windows.Forms.PictureBox();
+            this.pb3_ON = new System.Windows.Forms.PictureBox();
+            this.pb3_OFF = new System.Windows.Forms.PictureBox();
+            this.pb4_OFF = new System.Windows.Forms.PictureBox();
+            this.pb4_ON = new System.Windows.Forms.PictureBox();
+            this.pb_Button1_OFF = new System.Windows.Forms.PictureBox();
+            this.pb_Button1_ON = new System.Windows.Forms.PictureBox();
+            this.pb_Button2_ON = new System.Windows.Forms.PictureBox();
+            this.pb_Button2_OFF = new System.Windows.Forms.PictureBox();
+            this.pb_Button3_ON = new System.Windows.Forms.PictureBox();
+            this.pb_Button3_OFF = new System.Windows.Forms.PictureBox();
+            this.pb_Button4_ON = new System.Windows.Forms.PictureBox();
+            this.pb_Button4_OFF = new System.Windows.Forms.PictureBox();
+            this.pb_Button1_Input = new System.Windows.Forms.PictureBox();
+            this.pb_Button1_Output = new System.Windows.Forms.PictureBox();
+            this.panel_slider = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.progressBar_Download = new System.Windows.Forms.ProgressBar();
+            this.pb_download = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pb_Button4_Output = new System.Windows.Forms.PictureBox();
+            this.pb_Button3_Output = new System.Windows.Forms.PictureBox();
+            this.pb_Button2_Output = new System.Windows.Forms.PictureBox();
+            this.pb_Button4_Input = new System.Windows.Forms.PictureBox();
+            this.pb_Button3_Input = new System.Windows.Forms.PictureBox();
+            this.pb_Button2_Input = new System.Windows.Forms.PictureBox();
+            this.timer_slider = new System.Windows.Forms.Timer(this.components);
             this.cb_Ports = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.bt_OpenPort = new System.Windows.Forms.Button();
@@ -45,9 +79,400 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.l_version = new System.Windows.Forms.Label();
             this.bt_refresh = new System.Windows.Forms.Button();
+            this.button_slide = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1_OFF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2_OFF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1_ON)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2_ON)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb3_ON)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb3_OFF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb4_OFF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb4_ON)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button1_OFF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button1_ON)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button2_ON)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button2_OFF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button3_ON)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button3_OFF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button4_ON)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button4_OFF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button1_Input)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button1_Output)).BeginInit();
+            this.panel_slider.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_download)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button4_Output)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button3_Output)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button2_Output)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button4_Input)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button3_Input)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button2_Input)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_CH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_V)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pb1_OFF
+            // 
+            this.pb1_OFF.Image = ((System.Drawing.Image)(resources.GetObject("pb1_OFF.Image")));
+            this.pb1_OFF.Location = new System.Drawing.Point(95, 28);
+            this.pb1_OFF.Name = "pb1_OFF";
+            this.pb1_OFF.Size = new System.Drawing.Size(84, 78);
+            this.pb1_OFF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb1_OFF.TabIndex = 33;
+            this.pb1_OFF.TabStop = false;
+            // 
+            // pb2_OFF
+            // 
+            this.pb2_OFF.Image = ((System.Drawing.Image)(resources.GetObject("pb2_OFF.Image")));
+            this.pb2_OFF.Location = new System.Drawing.Point(95, 112);
+            this.pb2_OFF.Name = "pb2_OFF";
+            this.pb2_OFF.Size = new System.Drawing.Size(84, 78);
+            this.pb2_OFF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb2_OFF.TabIndex = 34;
+            this.pb2_OFF.TabStop = false;
+            // 
+            // pb1_ON
+            // 
+            this.pb1_ON.Image = ((System.Drawing.Image)(resources.GetObject("pb1_ON.Image")));
+            this.pb1_ON.Location = new System.Drawing.Point(95, 28);
+            this.pb1_ON.Name = "pb1_ON";
+            this.pb1_ON.Size = new System.Drawing.Size(84, 78);
+            this.pb1_ON.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb1_ON.TabIndex = 35;
+            this.pb1_ON.TabStop = false;
+            // 
+            // pb2_ON
+            // 
+            this.pb2_ON.Image = ((System.Drawing.Image)(resources.GetObject("pb2_ON.Image")));
+            this.pb2_ON.Location = new System.Drawing.Point(95, 112);
+            this.pb2_ON.Name = "pb2_ON";
+            this.pb2_ON.Size = new System.Drawing.Size(84, 78);
+            this.pb2_ON.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb2_ON.TabIndex = 36;
+            this.pb2_ON.TabStop = false;
+            // 
+            // pb3_ON
+            // 
+            this.pb3_ON.Image = ((System.Drawing.Image)(resources.GetObject("pb3_ON.Image")));
+            this.pb3_ON.Location = new System.Drawing.Point(95, 196);
+            this.pb3_ON.Name = "pb3_ON";
+            this.pb3_ON.Size = new System.Drawing.Size(84, 78);
+            this.pb3_ON.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb3_ON.TabIndex = 38;
+            this.pb3_ON.TabStop = false;
+            // 
+            // pb3_OFF
+            // 
+            this.pb3_OFF.Image = ((System.Drawing.Image)(resources.GetObject("pb3_OFF.Image")));
+            this.pb3_OFF.Location = new System.Drawing.Point(95, 196);
+            this.pb3_OFF.Name = "pb3_OFF";
+            this.pb3_OFF.Size = new System.Drawing.Size(84, 78);
+            this.pb3_OFF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb3_OFF.TabIndex = 37;
+            this.pb3_OFF.TabStop = false;
+            // 
+            // pb4_OFF
+            // 
+            this.pb4_OFF.Image = ((System.Drawing.Image)(resources.GetObject("pb4_OFF.Image")));
+            this.pb4_OFF.Location = new System.Drawing.Point(95, 280);
+            this.pb4_OFF.Name = "pb4_OFF";
+            this.pb4_OFF.Size = new System.Drawing.Size(84, 78);
+            this.pb4_OFF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb4_OFF.TabIndex = 39;
+            this.pb4_OFF.TabStop = false;
+            // 
+            // pb4_ON
+            // 
+            this.pb4_ON.Image = ((System.Drawing.Image)(resources.GetObject("pb4_ON.Image")));
+            this.pb4_ON.Location = new System.Drawing.Point(95, 280);
+            this.pb4_ON.Name = "pb4_ON";
+            this.pb4_ON.Size = new System.Drawing.Size(84, 78);
+            this.pb4_ON.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb4_ON.TabIndex = 40;
+            this.pb4_ON.TabStop = false;
+            // 
+            // pb_Button1_OFF
+            // 
+            this.pb_Button1_OFF.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button1_OFF.Image")));
+            this.pb_Button1_OFF.Location = new System.Drawing.Point(95, 28);
+            this.pb_Button1_OFF.Name = "pb_Button1_OFF";
+            this.pb_Button1_OFF.Size = new System.Drawing.Size(84, 78);
+            this.pb_Button1_OFF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button1_OFF.TabIndex = 41;
+            this.pb_Button1_OFF.TabStop = false;
+            this.pb_Button1_OFF.Click += new System.EventHandler(this.pb_Button1_OFF_Click);
+            // 
+            // pb_Button1_ON
+            // 
+            this.pb_Button1_ON.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button1_ON.Image")));
+            this.pb_Button1_ON.Location = new System.Drawing.Point(95, 28);
+            this.pb_Button1_ON.Name = "pb_Button1_ON";
+            this.pb_Button1_ON.Size = new System.Drawing.Size(84, 78);
+            this.pb_Button1_ON.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button1_ON.TabIndex = 42;
+            this.pb_Button1_ON.TabStop = false;
+            this.pb_Button1_ON.Click += new System.EventHandler(this.pb_Button1_ON_Click);
+            // 
+            // pb_Button2_ON
+            // 
+            this.pb_Button2_ON.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button2_ON.Image")));
+            this.pb_Button2_ON.Location = new System.Drawing.Point(95, 112);
+            this.pb_Button2_ON.Name = "pb_Button2_ON";
+            this.pb_Button2_ON.Size = new System.Drawing.Size(84, 78);
+            this.pb_Button2_ON.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button2_ON.TabIndex = 44;
+            this.pb_Button2_ON.TabStop = false;
+            this.pb_Button2_ON.Click += new System.EventHandler(this.pb_Button2_ON_Click);
+            // 
+            // pb_Button2_OFF
+            // 
+            this.pb_Button2_OFF.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button2_OFF.Image")));
+            this.pb_Button2_OFF.Location = new System.Drawing.Point(95, 112);
+            this.pb_Button2_OFF.Name = "pb_Button2_OFF";
+            this.pb_Button2_OFF.Size = new System.Drawing.Size(84, 78);
+            this.pb_Button2_OFF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button2_OFF.TabIndex = 43;
+            this.pb_Button2_OFF.TabStop = false;
+            this.pb_Button2_OFF.Click += new System.EventHandler(this.pb_Button2_OFF_Click);
+            // 
+            // pb_Button3_ON
+            // 
+            this.pb_Button3_ON.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button3_ON.Image")));
+            this.pb_Button3_ON.Location = new System.Drawing.Point(95, 196);
+            this.pb_Button3_ON.Name = "pb_Button3_ON";
+            this.pb_Button3_ON.Size = new System.Drawing.Size(84, 78);
+            this.pb_Button3_ON.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button3_ON.TabIndex = 46;
+            this.pb_Button3_ON.TabStop = false;
+            this.pb_Button3_ON.Click += new System.EventHandler(this.pb_Button3_ON_Click);
+            // 
+            // pb_Button3_OFF
+            // 
+            this.pb_Button3_OFF.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button3_OFF.Image")));
+            this.pb_Button3_OFF.Location = new System.Drawing.Point(95, 196);
+            this.pb_Button3_OFF.Name = "pb_Button3_OFF";
+            this.pb_Button3_OFF.Size = new System.Drawing.Size(84, 78);
+            this.pb_Button3_OFF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button3_OFF.TabIndex = 45;
+            this.pb_Button3_OFF.TabStop = false;
+            this.pb_Button3_OFF.Click += new System.EventHandler(this.pb_Button3_OFF_Click);
+            // 
+            // pb_Button4_ON
+            // 
+            this.pb_Button4_ON.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button4_ON.Image")));
+            this.pb_Button4_ON.Location = new System.Drawing.Point(95, 280);
+            this.pb_Button4_ON.Name = "pb_Button4_ON";
+            this.pb_Button4_ON.Size = new System.Drawing.Size(84, 78);
+            this.pb_Button4_ON.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button4_ON.TabIndex = 48;
+            this.pb_Button4_ON.TabStop = false;
+            this.pb_Button4_ON.Click += new System.EventHandler(this.pb_Button4_ON_Click);
+            // 
+            // pb_Button4_OFF
+            // 
+            this.pb_Button4_OFF.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button4_OFF.Image")));
+            this.pb_Button4_OFF.Location = new System.Drawing.Point(95, 280);
+            this.pb_Button4_OFF.Name = "pb_Button4_OFF";
+            this.pb_Button4_OFF.Size = new System.Drawing.Size(84, 78);
+            this.pb_Button4_OFF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button4_OFF.TabIndex = 47;
+            this.pb_Button4_OFF.TabStop = false;
+            this.pb_Button4_OFF.Click += new System.EventHandler(this.pb_Button4_OFF_Click);
+            // 
+            // pb_Button1_Input
+            // 
+            this.pb_Button1_Input.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button1_Input.Image")));
+            this.pb_Button1_Input.Location = new System.Drawing.Point(254, 28);
+            this.pb_Button1_Input.Name = "pb_Button1_Input";
+            this.pb_Button1_Input.Size = new System.Drawing.Size(78, 78);
+            this.pb_Button1_Input.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button1_Input.TabIndex = 49;
+            this.pb_Button1_Input.TabStop = false;
+            this.pb_Button1_Input.Click += new System.EventHandler(this.pb_Button1_Input_Click);
+            // 
+            // pb_Button1_Output
+            // 
+            this.pb_Button1_Output.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button1_Output.Image")));
+            this.pb_Button1_Output.Location = new System.Drawing.Point(254, 28);
+            this.pb_Button1_Output.Name = "pb_Button1_Output";
+            this.pb_Button1_Output.Size = new System.Drawing.Size(78, 78);
+            this.pb_Button1_Output.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button1_Output.TabIndex = 50;
+            this.pb_Button1_Output.TabStop = false;
+            this.pb_Button1_Output.Click += new System.EventHandler(this.pb_Button1_Output_Click);
+            // 
+            // panel_slider
+            // 
+            this.panel_slider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel_slider.Controls.Add(this.label8);
+            this.panel_slider.Controls.Add(this.label7);
+            this.panel_slider.Controls.Add(this.label6);
+            this.panel_slider.Controls.Add(this.label5);
+            this.panel_slider.Controls.Add(this.progressBar_Download);
+            this.panel_slider.Controls.Add(this.pb_download);
+            this.panel_slider.Controls.Add(this.label4);
+            this.panel_slider.Controls.Add(this.pb_Button2_OFF);
+            this.panel_slider.Controls.Add(this.pb_Button1_OFF);
+            this.panel_slider.Controls.Add(this.pb_Button3_OFF);
+            this.panel_slider.Controls.Add(this.pb_Button4_OFF);
+            this.panel_slider.Controls.Add(this.pb1_OFF);
+            this.panel_slider.Controls.Add(this.pb2_OFF);
+            this.panel_slider.Controls.Add(this.pb1_ON);
+            this.panel_slider.Controls.Add(this.pb2_ON);
+            this.panel_slider.Controls.Add(this.pb3_OFF);
+            this.panel_slider.Controls.Add(this.pb3_ON);
+            this.panel_slider.Controls.Add(this.pb4_OFF);
+            this.panel_slider.Controls.Add(this.pb4_ON);
+            this.panel_slider.Controls.Add(this.pb_Button3_ON);
+            this.panel_slider.Controls.Add(this.pb_Button2_ON);
+            this.panel_slider.Controls.Add(this.pb_Button1_ON);
+            this.panel_slider.Controls.Add(this.pb_Button4_ON);
+            this.panel_slider.Controls.Add(this.pb_Button4_Output);
+            this.panel_slider.Controls.Add(this.pb_Button3_Output);
+            this.panel_slider.Controls.Add(this.pb_Button2_Output);
+            this.panel_slider.Controls.Add(this.pb_Button1_Output);
+            this.panel_slider.Controls.Add(this.pb_Button4_Input);
+            this.panel_slider.Controls.Add(this.pb_Button3_Input);
+            this.panel_slider.Controls.Add(this.pb_Button2_Input);
+            this.panel_slider.Controls.Add(this.pb_Button1_Input);
+            this.panel_slider.Location = new System.Drawing.Point(466, 0);
+            this.panel_slider.Name = "panel_slider";
+            this.panel_slider.Size = new System.Drawing.Size(416, 503);
+            this.panel_slider.TabIndex = 51;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(124, 408);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(124, 13);
+            this.label8.TabIndex = 63;
+            this.label8.Text = "load settings to controller";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(43, 315);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(19, 13);
+            this.label7.TabIndex = 62;
+            this.label7.Text = "31";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(43, 235);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(19, 13);
+            this.label6.TabIndex = 61;
+            this.label6.Text = "30";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(43, 145);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(19, 13);
+            this.label5.TabIndex = 60;
+            this.label5.Text = "29";
+            // 
+            // progressBar_Download
+            // 
+            this.progressBar_Download.Location = new System.Drawing.Point(254, 457);
+            this.progressBar_Download.Name = "progressBar_Download";
+            this.progressBar_Download.Size = new System.Drawing.Size(78, 23);
+            this.progressBar_Download.TabIndex = 59;
+            // 
+            // pb_download
+            // 
+            this.pb_download.Image = ((System.Drawing.Image)(resources.GetObject("pb_download.Image")));
+            this.pb_download.Location = new System.Drawing.Point(254, 373);
+            this.pb_download.Name = "pb_download";
+            this.pb_download.Size = new System.Drawing.Size(78, 78);
+            this.pb_download.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_download.TabIndex = 58;
+            this.pb_download.TabStop = false;
+            this.pb_download.Click += new System.EventHandler(this.pb_download_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(43, 61);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(19, 13);
+            this.label4.TabIndex = 57;
+            this.label4.Text = "28";
+            // 
+            // pb_Button4_Output
+            // 
+            this.pb_Button4_Output.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button4_Output.Image")));
+            this.pb_Button4_Output.Location = new System.Drawing.Point(254, 280);
+            this.pb_Button4_Output.Name = "pb_Button4_Output";
+            this.pb_Button4_Output.Size = new System.Drawing.Size(78, 78);
+            this.pb_Button4_Output.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button4_Output.TabIndex = 56;
+            this.pb_Button4_Output.TabStop = false;
+            this.pb_Button4_Output.Click += new System.EventHandler(this.pb_Button4_Output_Click);
+            // 
+            // pb_Button3_Output
+            // 
+            this.pb_Button3_Output.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button3_Output.Image")));
+            this.pb_Button3_Output.Location = new System.Drawing.Point(254, 196);
+            this.pb_Button3_Output.Name = "pb_Button3_Output";
+            this.pb_Button3_Output.Size = new System.Drawing.Size(78, 78);
+            this.pb_Button3_Output.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button3_Output.TabIndex = 54;
+            this.pb_Button3_Output.TabStop = false;
+            this.pb_Button3_Output.Click += new System.EventHandler(this.pb_Button3_Output_Click);
+            // 
+            // pb_Button2_Output
+            // 
+            this.pb_Button2_Output.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button2_Output.Image")));
+            this.pb_Button2_Output.Location = new System.Drawing.Point(254, 112);
+            this.pb_Button2_Output.Name = "pb_Button2_Output";
+            this.pb_Button2_Output.Size = new System.Drawing.Size(78, 78);
+            this.pb_Button2_Output.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button2_Output.TabIndex = 52;
+            this.pb_Button2_Output.TabStop = false;
+            this.pb_Button2_Output.Click += new System.EventHandler(this.pb_Button2_Output_Click);
+            // 
+            // pb_Button4_Input
+            // 
+            this.pb_Button4_Input.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button4_Input.Image")));
+            this.pb_Button4_Input.Location = new System.Drawing.Point(254, 280);
+            this.pb_Button4_Input.Name = "pb_Button4_Input";
+            this.pb_Button4_Input.Size = new System.Drawing.Size(78, 78);
+            this.pb_Button4_Input.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button4_Input.TabIndex = 55;
+            this.pb_Button4_Input.TabStop = false;
+            this.pb_Button4_Input.Click += new System.EventHandler(this.pb_Button4_Input_Click);
+            // 
+            // pb_Button3_Input
+            // 
+            this.pb_Button3_Input.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button3_Input.Image")));
+            this.pb_Button3_Input.Location = new System.Drawing.Point(254, 196);
+            this.pb_Button3_Input.Name = "pb_Button3_Input";
+            this.pb_Button3_Input.Size = new System.Drawing.Size(78, 78);
+            this.pb_Button3_Input.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button3_Input.TabIndex = 53;
+            this.pb_Button3_Input.TabStop = false;
+            this.pb_Button3_Input.Click += new System.EventHandler(this.pb_Button3_Input_Click);
+            // 
+            // pb_Button2_Input
+            // 
+            this.pb_Button2_Input.Image = ((System.Drawing.Image)(resources.GetObject("pb_Button2_Input.Image")));
+            this.pb_Button2_Input.Location = new System.Drawing.Point(254, 112);
+            this.pb_Button2_Input.Name = "pb_Button2_Input";
+            this.pb_Button2_Input.Size = new System.Drawing.Size(78, 78);
+            this.pb_Button2_Input.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Button2_Input.TabIndex = 51;
+            this.pb_Button2_Input.TabStop = false;
+            this.pb_Button2_Input.Click += new System.EventHandler(this.pb_Button2_Input_Click);
+            // 
+            // timer_slider
+            // 
+            this.timer_slider.Interval = 1;
+            this.timer_slider.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // cb_Ports
             // 
@@ -96,7 +521,7 @@
             this.textbox.Name = "textbox";
             this.textbox.ReadOnly = true;
             this.textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textbox.Size = new System.Drawing.Size(424, 209);
+            this.textbox.Size = new System.Drawing.Size(424, 354);
             this.textbox.TabIndex = 21;
             // 
             // nUD_CH
@@ -215,7 +640,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(93, 321);
+            this.linkLabel1.Location = new System.Drawing.Point(95, 467);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(343, 13);
             this.linkLabel1.TabIndex = 30;
@@ -226,7 +651,7 @@
             // l_version
             // 
             this.l_version.AutoSize = true;
-            this.l_version.Location = new System.Drawing.Point(11, 321);
+            this.l_version.Location = new System.Drawing.Point(13, 467);
             this.l_version.Name = "l_version";
             this.l_version.Size = new System.Drawing.Size(45, 13);
             this.l_version.TabIndex = 31;
@@ -242,12 +667,24 @@
             this.bt_refresh.UseVisualStyleBackColor = true;
             this.bt_refresh.Click += new System.EventHandler(this.bt_refresh_Click);
             // 
+            // button_slide
+            // 
+            this.button_slide.Location = new System.Drawing.Point(442, 259);
+            this.button_slide.Name = "button_slide";
+            this.button_slide.Size = new System.Drawing.Size(18, 68);
+            this.button_slide.TabIndex = 52;
+            this.button_slide.Text = ">";
+            this.button_slide.UseVisualStyleBackColor = true;
+            this.button_slide.Click += new System.EventHandler(this.button_slide_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(447, 343);
+            this.ClientSize = new System.Drawing.Size(882, 515);
+            this.Controls.Add(this.button_slide);
+            this.Controls.Add(this.panel_slider);
             this.Controls.Add(this.bt_refresh);
             this.Controls.Add(this.l_version);
             this.Controls.Add(this.linkLabel1);
@@ -270,6 +707,33 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Streufeldkompensation Test Software";
+            ((System.ComponentModel.ISupportInitialize)(this.pb1_OFF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2_OFF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1_ON)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2_ON)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb3_ON)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb3_OFF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb4_OFF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb4_ON)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button1_OFF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button1_ON)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button2_ON)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button2_OFF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button3_ON)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button3_OFF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button4_ON)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button4_OFF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button1_Input)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button1_Output)).EndInit();
+            this.panel_slider.ResumeLayout(false);
+            this.panel_slider.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_download)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button4_Output)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button3_Output)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button2_Output)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button4_Input)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button3_Input)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Button2_Input)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_CH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_V)).EndInit();
             this.ResumeLayout(false);
@@ -278,7 +742,26 @@
         }
 
         #endregion
-
+        private System.Windows.Forms.PictureBox pb1_OFF;
+        private System.Windows.Forms.PictureBox pb2_OFF;
+        private System.Windows.Forms.PictureBox pb1_ON;
+        private System.Windows.Forms.PictureBox pb2_ON;
+        private System.Windows.Forms.PictureBox pb3_ON;
+        private System.Windows.Forms.PictureBox pb3_OFF;
+        private System.Windows.Forms.PictureBox pb4_OFF;
+        private System.Windows.Forms.PictureBox pb4_ON;
+        private System.Windows.Forms.PictureBox pb_Button1_OFF;
+        private System.Windows.Forms.PictureBox pb_Button1_ON;
+        private System.Windows.Forms.PictureBox pb_Button2_ON;
+        private System.Windows.Forms.PictureBox pb_Button2_OFF;
+        private System.Windows.Forms.PictureBox pb_Button3_ON;
+        private System.Windows.Forms.PictureBox pb_Button3_OFF;
+        private System.Windows.Forms.PictureBox pb_Button4_ON;
+        private System.Windows.Forms.PictureBox pb_Button4_OFF;
+        private System.Windows.Forms.PictureBox pb_Button1_Input;
+        private System.Windows.Forms.PictureBox pb_Button1_Output;
+        private System.Windows.Forms.Panel panel_slider;
+        private System.Windows.Forms.Timer timer_slider;
         private System.Windows.Forms.ComboBox cb_Ports;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bt_OpenPort;
@@ -295,6 +778,21 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label l_version;
         private System.Windows.Forms.Button bt_refresh;
+        private System.Windows.Forms.Button bt_slide;
+        private System.Windows.Forms.PictureBox pb_Button4_Output;
+        private System.Windows.Forms.PictureBox pb_Button4_Input;
+        private System.Windows.Forms.PictureBox pb_Button3_Output;
+        private System.Windows.Forms.PictureBox pb_Button3_Input;
+        private System.Windows.Forms.PictureBox pb_Button2_Output;
+        private System.Windows.Forms.PictureBox pb_Button2_Input;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pb_download;
+        private System.Windows.Forms.ProgressBar progressBar_Download;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button_slide;
     }
 }
 
