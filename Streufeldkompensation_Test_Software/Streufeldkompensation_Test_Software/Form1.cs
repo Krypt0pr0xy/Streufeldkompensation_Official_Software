@@ -532,7 +532,7 @@ namespace Streufeldkompensation_Test_Software
             pb_Button4_ON.Visible = false;
             pb_Button4_OFF.Visible = false;
 
-            pb4_OFF.Visible = true;
+            pb4_OFF.Visible = true; 
             pb4_ON.Visible = true;
         }
 
