@@ -12,6 +12,7 @@ namespace Streufeldkompensation_Test_Software
 
         bool connected = false;
         int panelWidth;
+
         bool Hidden;
 
         public Form1()//init Form
