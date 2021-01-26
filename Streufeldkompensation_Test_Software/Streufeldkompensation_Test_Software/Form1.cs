@@ -11,7 +11,6 @@ namespace Streufeldkompensation_Test_Software
         SerialPort sport = new SerialPort();//New class as Serialport
 
         bool connected = false;
-
         int panelWidth;
         bool Hidden;
 
@@ -35,7 +34,6 @@ namespace Streufeldkompensation_Test_Software
                 this.Refresh();
             }
 
-
             pb_Button1_OFF.Visible = false;
             pb_Button1_ON.Visible = false;
             pb_Button2_OFF.Visible = false;
@@ -51,6 +49,15 @@ namespace Streufeldkompensation_Test_Software
             pb_Button3_Output.Visible = false;
             pb_Button4_Output.Visible = false;
 
+        }
+
+        private void delay_ms(int time_ms)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            Thread.Sleep(time_ms);   //wait for spesific time
+            Cursor.Current = Cursors.Arrow;
+            //Cursor.Position = new Point(Cursor.Position.X + 1, Cursor.Position.Y);
+            //Cursor.Position = new Point(Cursor.Position.X - 1, Cursor.Position.Y);
         }
 
         private void adding_text_to_textbox(String input)//Funtion for adding text to the end of the text box
@@ -81,7 +88,6 @@ namespace Streufeldkompensation_Test_Software
                 }
                 catch (Exception ex)//check for errors
                 {MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);}
-
             }
         }
 
@@ -92,7 +98,9 @@ namespace Streufeldkompensation_Test_Software
             {
                 while (sport.BytesToRead > 0)//ready data
                 {
-                    data = sport.ReadExisting();//Read until end
+                    //data = sport.ReadExisting();//Read until end
+                    data = sport.ReadLine();//Read until end
+                    data += "\n";
                     data = data.Replace("\0", string.Empty);//Take all
 
                     if (data == "P28=OFF\r\n") { pb1_ON.Visible = false; pb1_OFF.Visible = true; }
@@ -149,6 +157,8 @@ namespace Streufeldkompensation_Test_Software
         private void bt_send_Click(object sender, EventArgs e)//Send Button click event
         {
             double voltage = (double)nUD_V.Value;
+            double offsetvoltage = (double)nUD_offset.Value;
+            voltage += (offsetvoltage / 1000);
             //Check if input is valid
             int output = 0;
             if (rb_1V.Checked == true){output = 1;}
@@ -232,10 +242,48 @@ namespace Streufeldkompensation_Test_Software
             }
         }
 
-       
+        private void nUD_offset_ValueChanged(object sender, EventArgs e)
+        {
+            check_voltage_offset();
+        }
+
+        private void nUD_V_ValueChanged(object sender, EventArgs e)
+        {
+            check_voltage_offset();
+        }
+
+        private void check_voltage_offset()
+        {
+            if (rb_1V.Checked == true)//check if is 1V setting 
+            {
+                while ((nUD_V.Value + (nUD_offset.Value / 1000)) > 1)//decreas offset value for total max voltage
+                {
+                    nUD_offset.Value -= 1;
+                }
+
+                while ((nUD_V.Value + (nUD_offset.Value / 1000)) < -1)//decreas offset value for total max voltage
+                {
+                    nUD_offset.Value += 1;
+                }
+            }
+            else
+            {
+                while ((nUD_V.Value + (nUD_offset.Value / 1000)) > 10)//decreas offset value for total max voltage
+                {
+                    nUD_offset.Value -= 1;
+                }
+
+                while ((nUD_V.Value + (nUD_offset.Value / 1000)) < -10)//decreas offset value for total max voltage
+                {
+                    nUD_offset.Value += 1;
+                }
+            }
+        }
+
         private void button_slide_Click(object sender, EventArgs e)
         {
-            timer_slider.Start();//start Timer
+            timer_slider.Start();//start Timer for slider every 1ms
+            timer_input_checker.Start();//start Timer for Input every 10 sec
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -244,7 +292,7 @@ namespace Streufeldkompensation_Test_Software
             {
                 panel_slider.Width = panel_slider.Width + 5;//Move panel
                 this.Width += 5;//Move main panel
-                if (panel_slider.Width >= panelWidth)//check if panel is bigger than main panel with
+                if (panel_slider.Width >= 400)//check if panel is bigger than main panel with
                 {
                     timer_slider.Stop();//stop Timer
                     button_slide.Text = "<";//change Text of button
@@ -258,6 +306,7 @@ namespace Streufeldkompensation_Test_Software
                 this.Width -= 5;//Move main panel
                 if (panel_slider.Width <= 0)//check if panel is smaller than zero main panel with
                 {
+                    this.Width = 500;
                     timer_slider.Stop();//stop Timer
                     button_slide.Text = ">";//change Text of button
                     Hidden = true;//set to Hidden true
@@ -497,52 +546,52 @@ namespace Streufeldkompensation_Test_Software
                     if (pb_Button1_Input.Visible)
                     {
                         sport.Write("PORTCONFIGURE_WRITE_28_INPUT\r");
-                        Thread.Sleep(500);
+                        delay_ms(500);
                         progressBar_Download.Value = 25;
                     }
                     else
                     {
                         sport.Write("PORTCONFIGURE_WRITE_28_OUTPUT\r");
-                        Thread.Sleep(500);
+                        delay_ms(500);
                         progressBar_Download.Value = 25;
                     }
                     //_______________________________________________
                     if (pb_Button2_Input.Visible)
                     {
                         sport.Write("PORTCONFIGURE_WRITE_29_INPUT\r");
-                        Thread.Sleep(500);
+                        delay_ms(500);
                         progressBar_Download.Value = 50;
                     }
                     else
                     {
                         sport.Write("PORTCONFIGURE_WRITE_29_OUTPUT\r");
-                        Thread.Sleep(500);
+                        delay_ms(500);
                         progressBar_Download.Value = 50;
                     }
                     //_______________________________________________
                     if (pb_Button3_Input.Visible)
                     {
                         sport.Write("PORTCONFIGURE_WRITE_30_INPUT\r");
-                        Thread.Sleep(500);
+                        delay_ms(500);
                         progressBar_Download.Value = 75;
                     }
                     else
                     {
                         sport.Write("PORTCONFIGURE_WRITE_30_OUTPUT\r");
-                        Thread.Sleep(500);
+                        delay_ms(500);
                         progressBar_Download.Value = 75;
                     }
                     //_______________________________________________
                     if (pb_Button4_Input.Visible)
                     {
                         sport.Write("PORTCONFIGURE_WRITE_31_INPUT\r");
-                        Thread.Sleep(500);
+                        delay_ms(500);
                         progressBar_Download.Value = 100;
                     }
                     else
                     {
                         sport.Write("PORTCONFIGURE_WRITE_31_OUTPUT\r");
-                        Thread.Sleep(500);
+                        delay_ms(500);
                         progressBar_Download.Value = 100;
                     }
 
@@ -558,6 +607,37 @@ namespace Streufeldkompensation_Test_Software
             { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
+        private void timer_input_checker_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sport.IsOpen)//check if serial port is open
+                {
+                    if (pb_Button1_Input.Visible == true)
+                    {
+                        sport.Write("PORTREAD_28_\r");
+                        delay_ms(500);
+                    }
+                    if (pb_Button2_Input.Visible == true)
+                    {
+                        sport.Write("PORTREAD_29_\r");
+                        delay_ms(500);
+                    }
+                    if (pb_Button3_Input.Visible == true)
+                    {
+                        sport.Write("PORTREAD_30_\r");
+                        delay_ms(500);
+                    }
+                    if (pb_Button4_Input.Visible == true)
+                    {
+                        sport.Write("PORTREAD_31_\r");
+                        delay_ms(500);
+                    }
+                }
+            }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
 
     }
 }
