@@ -341,7 +341,7 @@
             this.panel_slider.Controls.Add(this.pb_Button1_Input);
             this.panel_slider.Location = new System.Drawing.Point(466, 0);
             this.panel_slider.Name = "panel_slider";
-            this.panel_slider.Size = new System.Drawing.Size(416, 486);
+            this.panel_slider.Size = new System.Drawing.Size(416, 483);
             this.panel_slider.TabIndex = 51;
             // 
             // label8
@@ -720,7 +720,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(912, 498);
+            this.ClientSize = new System.Drawing.Size(907, 495);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.nUD_offset);
             this.Controls.Add(this.button_slide);

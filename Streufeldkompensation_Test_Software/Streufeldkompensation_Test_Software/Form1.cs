@@ -17,7 +17,7 @@ namespace Streufeldkompensation_Test_Software
         public Form1()//init Form
         {
             InitializeComponent();
-            l_version.Text = "Version: 4";//Flag for version
+            l_version.Text = "Version: 5";//Flag for version
             CheckForIllegalCrossThreadCalls = false;//pragma deactivate
             textbox.ForeColor = Color.Black;//set Text Color to Black
             foreach (String s in SerialPort.GetPortNames())//listing Port names
