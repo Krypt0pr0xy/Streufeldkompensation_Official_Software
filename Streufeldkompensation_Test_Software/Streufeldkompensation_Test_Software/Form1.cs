@@ -57,8 +57,6 @@ namespace Streufeldkompensation_Test_Software
             Cursor.Current = Cursors.WaitCursor;
             Thread.Sleep(time_ms);   //wait for spesific time
             Cursor.Current = Cursors.Arrow;
-            //Cursor.Position = new Point(Cursor.Position.X + 1, Cursor.Position.Y);
-            //Cursor.Position = new Point(Cursor.Position.X - 1, Cursor.Position.Y);
         }
 
         private void adding_text_to_textbox(String input)//Funtion for adding text to the end of the text box
@@ -312,6 +310,7 @@ namespace Streufeldkompensation_Test_Software
                     button_slide.Text = ">";//change Text of button
                     Hidden = true;//set to Hidden true
                     this.Refresh();//Refresh if  it is'nt
+                    timer_input_checker.Stop();
                 }
             }
         }
