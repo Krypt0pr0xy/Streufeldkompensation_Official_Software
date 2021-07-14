@@ -110,14 +110,23 @@ namespace Streufeldkompensation_Test_Software
             bt_OpenPort.Visible = true;//Button Open Port set invisible
             //disable send and close Button
             bt_send.Enabled = false;
-            sport_connected = false;//set bool to false
+            sport_connected = false;//set bool false
         }
 
         private void Update_UART()
         {
-            string data = "";
-            if (sport_connected == true)
+            if (!sport.IsOpen)
             {
+                bt_ClosePort.Visible = false;//Button Close Port set visible
+                bt_OpenPort.Visible = true;//Button Open Port set invisible
+                                           //disable send and close Button
+                bt_send.Enabled = false;
+                sport_connected = false;//set bool to false
+            }
+            string data = "";
+            if ((sport_connected == true))
+            {
+
                 try
                 {
                     while ((sport.BytesToRead > 0))//ready data
@@ -126,6 +135,19 @@ namespace Streufeldkompensation_Test_Software
                         data = sport.ReadExisting();//Read until end
                         data += "\n";
                         data = data.Replace("\0", string.Empty);//Take all
+
+                        if (data == "P28=OFF\r\n") { pb1_ON.Visible = false; pb1_OFF.Visible = true; }
+                        if (data == "P28=ON\r\n") { pb1_ON.Visible = true; pb1_OFF.Visible = false; }
+
+                        if (data == "P29=OFF\r\n") { pb2_ON.Visible = false; pb2_OFF.Visible = true; }
+                        if (data == "P29=ON\r\n") { pb2_ON.Visible = true; pb2_OFF.Visible = false; }
+
+                        if (data == "P30=OFF\r\n") { pb3_ON.Visible = false; pb3_OFF.Visible = true; }
+                        if (data == "P30=ON\r\n") { pb3_ON.Visible = true; pb3_OFF.Visible = false; }
+
+                        if (data == "P31=OFF\r\n") { pb4_ON.Visible = false; pb4_OFF.Visible = true; }
+                        if (data == "P31=ON\r\n") { pb4_ON.Visible = true; pb4_OFF.Visible = false; }
+
 
                         textbox.Text += data;//add to text box
                         textbox.SelectionStart = textbox.Text.Length;//dynamic size
@@ -137,41 +159,6 @@ namespace Streufeldkompensation_Test_Software
                 { adding_text_to_textbox("Error:" + ex.Message.ToString()); }//
             }
         }
-
-        private void sport_DataReceived(object sender, SerialDataReceivedEventArgs e)//Interuptrutine for receiving data
-        {
-            string data = "";
-            try
-            {
-                while (sport.BytesToRead > 0)//ready data
-                {
-                    //data = sport.ReadExisting();//Read until end
-                    data = sport.ReadLine();//Read until end
-                    data += "\n";
-                    data = data.Replace("\0", string.Empty);//Take all
-
-                    if (data == "P28=OFF\r\n") { pb1_ON.Visible = false; pb1_OFF.Visible = true; }
-                    if (data == "P28=ON\r\n") { pb1_ON.Visible = true; pb1_OFF.Visible = false; }
-
-                    if (data == "P29=OFF\r\n") { pb2_ON.Visible = false; pb2_OFF.Visible = true; }
-                    if (data == "P29=ON\r\n") { pb2_ON.Visible = true; pb2_OFF.Visible = false; }
-
-                    if (data == "P30=OFF\r\n") { pb3_ON.Visible = false; pb3_OFF.Visible = true; }
-                    if (data == "P30=ON\r\n") { pb3_ON.Visible = true; pb3_OFF.Visible = false; }
-
-                    if (data == "P31=OFF\r\n") { pb4_ON.Visible = false; pb4_OFF.Visible = true; }
-                    if (data == "P31=ON\r\n") { pb4_ON.Visible = true; pb4_OFF.Visible = false; }
-                    textbox.Text += data;//add to text box
-                    textbox.SelectionStart = textbox.Text.Length;//dynamic size
-                    textbox.ScrollToCaret();//scroll to the end
-                }
-            }
-            catch (Exception ex)//check for errors
-            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-
-            this.WindowState = FormWindowState.Normal;
-         }
-
 
 
         private void rb_10V_CheckedChanged(object sender, EventArgs e)//limitate the range
@@ -190,18 +177,21 @@ namespace Streufeldkompensation_Test_Software
         {
             double voltage = (double)nUD_V.Value;
             double offsetvoltage = (double)nUD_offset.Value;
+            string OUT_RES = "Error";
             voltage += (offsetvoltage / 1000);
             //Check if input is valid
             int output = 0;
-            if (rb_1V.Checked == true){output = 1;}
-            else{output = 10;}
+            if (rb_1V.Checked == true) { output = 1; }
+            else { output = 10; }
 
+            if (rb_out_res_high.Checked) { OUT_RES = "High"; }
+            else { OUT_RES = "Low"; }
             try
             {
                 //Send data
                 if (sport.IsOpen)
                 {
-                    sport.Write("SET_CH" + nUD_CH.Value.ToString() + "_" + voltage.ToString("F99").TrimEnd('0') + "_OUT" + output.ToString() + "\r");//sending to serial Port without scientific spelling 
+                    sport.Write("SET_CH" + nUD_CH.Value.ToString() + "_" + voltage.ToString("F99").TrimEnd('0') + "_OUT" + output.ToString() + "_" + OUT_RES + "\r");//sending to serial Port without scientific spelling 
                 }
                 else
                 {

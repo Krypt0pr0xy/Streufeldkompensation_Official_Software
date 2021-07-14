@@ -82,8 +82,8 @@
             this.nUD_offset = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.timer_input_checker = new System.Windows.Forms.Timer(this.components);
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rb_out_res_low = new System.Windows.Forms.RadioButton();
+            this.rb_out_res_high = new System.Windows.Forms.RadioButton();
             this.sport = new System.IO.Ports.SerialPort(this.components);
             this.Timer_Update_UART = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -520,7 +520,8 @@
             // 
             // bt_OpenPort
             // 
-            this.bt_OpenPort.Location = new System.Drawing.Point(191, 14);
+            this.bt_OpenPort.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.875F);
+            this.bt_OpenPort.Location = new System.Drawing.Point(191, 21);
             this.bt_OpenPort.Name = "bt_OpenPort";
             this.bt_OpenPort.Size = new System.Drawing.Size(75, 23);
             this.bt_OpenPort.TabIndex = 2;
@@ -531,7 +532,7 @@
             // bt_ClosePort
             // 
             this.bt_ClosePort.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_ClosePort.Location = new System.Drawing.Point(191, 14);
+            this.bt_ClosePort.Location = new System.Drawing.Point(191, 21);
             this.bt_ClosePort.Name = "bt_ClosePort";
             this.bt_ClosePort.Size = new System.Drawing.Size(75, 23);
             this.bt_ClosePort.TabIndex = 3;
@@ -734,31 +735,31 @@
             this.timer_input_checker.Interval = 10000;
             this.timer_input_checker.Tick += new System.EventHandler(this.timer_input_checker_Tick);
             // 
-            // radioButton1
+            // rb_out_res_low
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(13, 17);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(73, 16);
-            this.radioButton1.TabIndex = 55;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "270 Ohm";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rb_out_res_low.AutoSize = true;
+            this.rb_out_res_low.Checked = true;
+            this.rb_out_res_low.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_out_res_low.Location = new System.Drawing.Point(13, 17);
+            this.rb_out_res_low.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_out_res_low.Name = "rb_out_res_low";
+            this.rb_out_res_low.Size = new System.Drawing.Size(73, 16);
+            this.rb_out_res_low.TabIndex = 55;
+            this.rb_out_res_low.TabStop = true;
+            this.rb_out_res_low.Text = "270 Ohm";
+            this.rb_out_res_low.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rb_out_res_high
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(13, 38);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(75, 16);
-            this.radioButton2.TabIndex = 56;
-            this.radioButton2.Text = "2.7k Ohm";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rb_out_res_high.AutoSize = true;
+            this.rb_out_res_high.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_out_res_high.Location = new System.Drawing.Point(13, 38);
+            this.rb_out_res_high.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_out_res_high.Name = "rb_out_res_high";
+            this.rb_out_res_high.Size = new System.Drawing.Size(75, 16);
+            this.rb_out_res_high.TabIndex = 56;
+            this.rb_out_res_high.Text = "2.7k Ohm";
+            this.rb_out_res_high.UseVisualStyleBackColor = true;
             // 
             // Timer_Update_UART
             // 
@@ -767,8 +768,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.rb_out_res_low);
+            this.groupBox1.Controls.Add(this.rb_out_res_high);
             this.groupBox1.Location = new System.Drawing.Point(121, 100);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
@@ -974,8 +975,8 @@
         private System.Windows.Forms.NumericUpDown nUD_offset;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Timer timer_input_checker;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rb_out_res_low;
+        private System.Windows.Forms.RadioButton rb_out_res_high;
         private System.IO.Ports.SerialPort sport;
         private System.Windows.Forms.Timer Timer_Update_UART;
         private System.Windows.Forms.GroupBox groupBox1;
