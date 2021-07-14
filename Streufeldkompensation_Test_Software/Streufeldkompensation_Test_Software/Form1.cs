@@ -4,21 +4,27 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Threading;
 
+
+
 namespace Streufeldkompensation_Test_Software
 {
     public partial class Form1 : Form
     {
-        SerialPort sport = new SerialPort();//New class as Serialport
+        //SerialPort sport = new SerialPort();//New class as Serialport
 
         bool connected = false;
+        bool sport_connected = false;
         int panelWidth;
 
         bool Hidden;
 
+        bool slide_feature = false;
+
+
         public Form1()//init Form
         {
             InitializeComponent();
-            l_version.Text = "Version: 5";//Flag for version
+            l_version.Text = "Version: 6";//Flag for version
             CheckForIllegalCrossThreadCalls = false;//pragma deactivate
             textbox.ForeColor = Color.Black;//set Text Color to Black
             foreach (String s in SerialPort.GetPortNames())//listing Port names
@@ -69,24 +75,66 @@ namespace Streufeldkompensation_Test_Software
 
         private void bt_OpenPort_Click(object sender, EventArgs e)//connect to a COM port
         {
-            if (connected == false)
+            try//try to open Serial Port
             {
-                String port = cb_Ports.Text;
+                serialport_open(cb_Ports.Text);//Open funtion serialport open
+            }
+            catch (Exception) { adding_text_to_textbox("Error No Port is selected"); }//if an error has happend catch with exeption
+
+        }
+
+        private void serialport_open(string port)//Open Serial port
+        {
+            sport = new System.IO.Ports.SerialPort(
+            port, 9600, System.IO.Ports.Parity.None, 8, System.IO.Ports.StopBits.One);//generate new object for sport with specific attributs 
+            try//Try to:
+            {
+                sport.Open();//Open Serial port
+                //Enable Button Close and Button Send
+                bt_ClosePort.Visible = true;//Button Close Port set visible
+                bt_OpenPort.Visible = false;//Button Open Port set invisible
+                bt_send.Enabled = true;
+                sport_connected = true;//set bool to true
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error"); }//if an error has happend catch with exception
+        }
+
+        private void bt_ClosePort_Click(object sender, EventArgs e)//close connection to COM Port
+        {
+            if (sport.IsOpen)//check if serial port ist open
+            {
+                sport.Close();//close serial port
+            }
+            bt_ClosePort.Visible = false;//Button Close Port set visible
+            bt_OpenPort.Visible = true;//Button Open Port set invisible
+            //disable send and close Button
+            bt_send.Enabled = false;
+            sport_connected = false;//set bool to false
+        }
+
+        private void Update_UART()
+        {
+            string data = "";
+            if (sport_connected == true)
+            {
                 try
                 {
-                    sport = new SerialPort(port, 9600, Parity.None, 8, StopBits.One);//new Serial port
-                    sport.Open();
-                    if (sport.IsOpen)//check if is already open
+                    while ((sport.BytesToRead > 0))//ready data
                     {
-                        connected = true;
-                        bt_ClosePort.Visible = true;//Button Close Port set visible
-                        bt_OpenPort.Visible = false;//Button Open Port set invisible
-                        sport.DataReceived += new SerialDataReceivedEventHandler(sport_DataReceived);//adding a Data receive handler
-                        adding_text_to_textbox("Connected");//Text output for the textbox
+                        //data = sport.ReadExisting();//Read until end
+                        data = sport.ReadExisting();//Read until end
+                        data += "\n";
+                        data = data.Replace("\0", string.Empty);//Take all
+
+                        textbox.Text += data;//add to text box
+                        textbox.SelectionStart = textbox.Text.Length;//dynamic size
+                        textbox.ScrollToCaret();//scroll to the end
+
                     }
                 }
                 catch (Exception ex)//check for errors
-                {MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);}
+                { adding_text_to_textbox("Error:" + ex.Message.ToString()); }//
             }
         }
 
@@ -124,22 +172,7 @@ namespace Streufeldkompensation_Test_Software
             this.WindowState = FormWindowState.Normal;
          }
 
-        private void bt_ClosePort_Click(object sender, EventArgs e)//close connection to COM Port
-        {
-            try
-            {
-                if (sport.IsOpen)//check if is alreasy open
-                {
-                    sport.Close();//Close it
-                    connected = false;//delete Flag 
-                    bt_ClosePort.Visible = false;//Button Close Port set invisible
-                    bt_OpenPort.Visible = true;//Button Open Port set visible
-                    adding_text_to_textbox("Disconnected");//Text output for the textbox
-                }
-            }
-            catch (Exception ex)//check for errors
-            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
+
 
         private void rb_10V_CheckedChanged(object sender, EventArgs e)//limitate the range
         {
@@ -206,7 +239,7 @@ namespace Streufeldkompensation_Test_Software
             { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
-        private void bt_refresh_Click(object sender, EventArgs e)//Refresh Button
+        private void cb_Ports_Click(object sender, EventArgs e)
         {
             cb_Ports.Items.Clear();//Deleting old Items from Combobox
             foreach (String s in SerialPort.GetPortNames())//listing Port names
@@ -281,8 +314,16 @@ namespace Streufeldkompensation_Test_Software
 
         private void button_slide_Click(object sender, EventArgs e)
         {
-            timer_slider.Start();//start Timer for slider every 1ms
-            timer_input_checker.Start();//start Timer for Input every 10 sec
+            if(slide_feature)
+            {
+                timer_slider.Start();//start Timer for slider every 1ms
+                timer_input_checker.Start();//start Timer for Input every 10 sec
+            }
+            else
+            {
+                MessageBox.Show("this feature is not available on this version", "Error");
+            }
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -639,5 +680,9 @@ namespace Streufeldkompensation_Test_Software
             { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
+        private void Timer_Update_UART_Tick(object sender, EventArgs e)
+        {
+            Update_UART();
+        }
     }
 }
