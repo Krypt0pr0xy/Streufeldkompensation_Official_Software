@@ -227,7 +227,7 @@ namespace Streufeldkompensation_Test_Software
             }
             catch (Exception ex)//check for errors
             { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
+        } 
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)//Hyper link
         {
