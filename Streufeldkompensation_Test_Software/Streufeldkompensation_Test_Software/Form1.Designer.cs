@@ -741,7 +741,7 @@
             this.rb_out_res_low.Checked = true;
             this.rb_out_res_low.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rb_out_res_low.Location = new System.Drawing.Point(13, 17);
-            this.rb_out_res_low.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_out_res_low.Margin = new System.Windows.Forms.Padding(2);
             this.rb_out_res_low.Name = "rb_out_res_low";
             this.rb_out_res_low.Size = new System.Drawing.Size(73, 16);
             this.rb_out_res_low.TabIndex = 55;
@@ -754,7 +754,7 @@
             this.rb_out_res_high.AutoSize = true;
             this.rb_out_res_high.Font = new System.Drawing.Font("Arial Rounded MT Bold", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rb_out_res_high.Location = new System.Drawing.Point(13, 38);
-            this.rb_out_res_high.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_out_res_high.Margin = new System.Windows.Forms.Padding(2);
             this.rb_out_res_high.Name = "rb_out_res_high";
             this.rb_out_res_high.Size = new System.Drawing.Size(75, 16);
             this.rb_out_res_high.TabIndex = 56;
@@ -771,9 +771,9 @@
             this.groupBox1.Controls.Add(this.rb_out_res_low);
             this.groupBox1.Controls.Add(this.rb_out_res_high);
             this.groupBox1.Location = new System.Drawing.Point(121, 100);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(145, 65);
             this.groupBox1.TabIndex = 57;
             this.groupBox1.TabStop = false;
@@ -783,9 +783,9 @@
             this.groupBox2.Controls.Add(this.rb_1V);
             this.groupBox2.Controls.Add(this.rb_10V);
             this.groupBox2.Location = new System.Drawing.Point(23, 100);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(76, 65);
             this.groupBox2.TabIndex = 58;
             this.groupBox2.TabStop = false;
@@ -795,9 +795,9 @@
             this.groupBox3.Controls.Add(this.nUD_CH);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(23, 46);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(94, 40);
             this.groupBox3.TabIndex = 59;
             this.groupBox3.TabStop = false;
@@ -807,9 +807,9 @@
             this.groupBox4.Controls.Add(this.nUD_V);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Location = new System.Drawing.Point(121, 46);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(145, 40);
             this.groupBox4.TabIndex = 60;
             this.groupBox4.TabStop = false;
@@ -819,9 +819,9 @@
             this.groupBox5.Controls.Add(this.nUD_offset);
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Location = new System.Drawing.Point(271, 46);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox5.Size = new System.Drawing.Size(163, 40);
             this.groupBox5.TabIndex = 61;
             this.groupBox5.TabStop = false;
@@ -877,6 +877,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Streufeldkompensation Test Software";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.serialport_close);
             ((System.ComponentModel.ISupportInitialize)(this.pb1_OFF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb2_OFF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb1_ON)).EndInit();

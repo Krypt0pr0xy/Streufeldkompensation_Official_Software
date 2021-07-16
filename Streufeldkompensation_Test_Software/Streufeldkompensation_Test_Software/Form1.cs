@@ -93,14 +93,14 @@ namespace Streufeldkompensation_Test_Software
                 //Enable Button Close and Button Send
                 bt_ClosePort.Visible = true;//Button Close Port set visible
                 bt_OpenPort.Visible = false;//Button Open Port set invisible
+                cb_Ports.Enabled = false;
                 bt_send.Enabled = true;
                 sport_connected = true;//set bool to true
 
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error"); }//if an error has happend catch with exception
         }
-
-        private void bt_ClosePort_Click(object sender, EventArgs e)//close connection to COM Port
+        private void serialport_close()
         {
             if (sport.IsOpen)//check if serial port ist open
             {
@@ -108,9 +108,14 @@ namespace Streufeldkompensation_Test_Software
             }
             bt_ClosePort.Visible = false;//Button Close Port set visible
             bt_OpenPort.Visible = true;//Button Open Port set invisible
-            //disable send and close Button
-            bt_send.Enabled = false;
+            cb_Ports.Enabled = true;
+            bt_send.Enabled = false;//disable send and close Button
             sport_connected = false;//set bool false
+        }
+
+        private void bt_ClosePort_Click(object sender, EventArgs e)//close connection to COM Port
+        {
+            serialport_close();
         }
 
         private void Update_UART()
@@ -119,9 +124,9 @@ namespace Streufeldkompensation_Test_Software
             {
                 bt_ClosePort.Visible = false;//Button Close Port set visible
                 bt_OpenPort.Visible = true;//Button Open Port set invisible
-                                           //disable send and close Button
-                bt_send.Enabled = false;
+                bt_send.Enabled = false;//disable send and close Button
                 sport_connected = false;//set bool to false
+                cb_Ports.Enabled = true;
             }
             string data = "";
             if ((sport_connected == true))
@@ -673,6 +678,11 @@ namespace Streufeldkompensation_Test_Software
         private void Timer_Update_UART_Tick(object sender, EventArgs e)
         {
             Update_UART();
+        }
+
+        private void serialport_close(object sender, FormClosingEventArgs e)
+        {
+            serialport_close();
         }
     }
 }
