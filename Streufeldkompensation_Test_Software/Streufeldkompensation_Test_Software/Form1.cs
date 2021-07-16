@@ -113,6 +113,35 @@ namespace Streufeldkompensation_Test_Software
             sport_connected = false;//set bool false
         }
 
+        private void send_serial_Voltage()
+        {
+            double voltage = (double)nUD_V.Value;
+            double offsetvoltage = (double)nUD_offset.Value;
+
+            voltage += (offsetvoltage / 1000);
+            //Check if input is valid
+            int output = 0;
+            if (rb_1V.Checked == true) { output = 1; }
+            else { output = 10; }
+            string OUT_RES = "Error";
+            if (rb_out_res_high.Checked) { OUT_RES = "High"; }
+            else { OUT_RES = "Low"; }
+            try
+            {
+                //Send data
+                if (sport.IsOpen)
+                {
+                    sport.Write("SET_CH" + nUD_CH.Value.ToString() + "_" + voltage.ToString("F99").TrimEnd('0') + "_OUT" + output.ToString() + "_" + OUT_RES + "\r");//sending to serial Port without scientific spelling 
+                }
+                else
+                {
+                    adding_text_to_textbox("Not Connected");//Text output for the textbox
+                }
+            }
+            catch (Exception ex)//check for errors
+            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
         private void bt_ClosePort_Click(object sender, EventArgs e)//close connection to COM Port
         {
             serialport_close();
@@ -180,31 +209,7 @@ namespace Streufeldkompensation_Test_Software
 
         private void bt_send_Click(object sender, EventArgs e)//Send Button click event
         {
-            double voltage = (double)nUD_V.Value;
-            double offsetvoltage = (double)nUD_offset.Value;
-            string OUT_RES = "Error";
-            voltage += (offsetvoltage / 1000);
-            //Check if input is valid
-            int output = 0;
-            if (rb_1V.Checked == true) { output = 1; }
-            else { output = 10; }
-
-            if (rb_out_res_high.Checked) { OUT_RES = "High"; }
-            else { OUT_RES = "Low"; }
-            try
-            {
-                //Send data
-                if (sport.IsOpen)
-                {
-                    sport.Write("SET_CH" + nUD_CH.Value.ToString() + "_" + voltage.ToString("F99").TrimEnd('0') + "_OUT" + output.ToString() + "_" + OUT_RES + "\r");//sending to serial Port without scientific spelling 
-                }
-                else
-                {
-                    adding_text_to_textbox("Not Connected");//Text output for the textbox
-                }
-            }
-            catch (Exception ex)//check for errors
-            { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            send_serial_Voltage();
         }
 
         private void b_help_Click(object sender, EventArgs e)//button help 
@@ -247,25 +252,7 @@ namespace Streufeldkompensation_Test_Software
         {
             if(e.KeyChar == (char)Keys.Enter)//Check if Button Enter on a Keyboard is press do same as Send
             {
-                double voltage = (double)nUD_V.Value;
-                //Check if input is valid
-                int output = 0;
-                if (rb_1V.Checked == true) { output = 1; }
-                else { output = 10; }
-                try
-                {
-                    //Send data
-                    if (sport.IsOpen)
-                    {
-                        sport.Write("SET_CH" + nUD_CH.Value.ToString() + "_" + voltage.ToString("F99").TrimEnd('0') + "_OUT" + output.ToString() + "\r");//sending to serial Port without scientific spelling 
-                    }
-                    else
-                    {
-                        adding_text_to_textbox("Not Connected");//Text output for the textbox
-                    }
-                }
-                catch (Exception ex)//check for errors
-                { MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                send_serial_Voltage();
             }
         }
 
