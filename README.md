@@ -19,9 +19,9 @@ Bei betätigen des Spezialfunktion Knopfes klappt sich das Dialogfeld mehr aus:
 - In dem kann man die Vier Spezialpins separat einstellen. Es ist möglich als Input oder als Output. In diesem Fall sin alle Pins als Eingänge definiert und wenn ein Positives Signal an den jeweiligen Pins anliegt wird in der Software die Glühbirne leuchten.
 
 ![image](https://user-images.githubusercontent.com/45595553/107516934-64d30f80-6bad-11eb-81c1-93a7304df757.png)
-
+***
 # The Visualstudio installation is explained under [Install Visualstudio][1]
-
+***
 [1]:https://github.com/Krypt0pr0xy/Streufeldkompensation_Official_Software/blob/master/Visualstudio_install.md
 
 
