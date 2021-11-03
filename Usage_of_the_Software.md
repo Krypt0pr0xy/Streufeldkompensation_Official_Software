@@ -12,7 +12,7 @@ Please note when the following window opens
 ***
 # Usage
 
-[1]:https://github.com/Krypt0pr0xy/Streufeldkompensation_Official_Software/blob/master/Streufeldkompensation_Test_Software.exe
+[1]:https://github.com/Krypt0pr0xy/Streufeldkompensation_Official_Software/blob/master/Streufeldkompensation_Official_Software.exe
 
 [2]:https://github.com/Krypt0pr0xy/Streufeldkompensation_Official_Software/blob/master/WindowsprotectedyourPC.PNG
 
