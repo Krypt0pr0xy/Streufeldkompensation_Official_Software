@@ -680,10 +680,10 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(95, 467);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(343, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(354, 13);
             this.linkLabel1.TabIndex = 30;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "https://github.com/Krypt0pr0xy/Streufeldkompensation_Test_Software";
+            this.linkLabel1.Text = "https://github.com/Krypt0pr0xy/Streufeldkompensation_Official_Software";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // l_version
