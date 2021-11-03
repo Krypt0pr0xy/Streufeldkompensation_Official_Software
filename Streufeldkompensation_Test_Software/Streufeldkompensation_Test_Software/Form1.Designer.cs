@@ -876,7 +876,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Streufeldkompensation Test Software";
+            this.Text = "Streufeldkompensation Official Software";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.serialport_close);
             ((System.ComponentModel.ISupportInitialize)(this.pb1_OFF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb2_OFF)).EndInit();
