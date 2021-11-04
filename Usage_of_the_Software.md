@@ -37,8 +37,22 @@ To get started you need to launch the software, it does not require admin rights
 In the software you must select the serial port (number 1 from the description) and then click on Open Port.
 
 ## LED Status:
-## Usage without the Oficial Softwar
+On the front panel are three LEDs for status.
+LED | Status
+--- | ---
+EN | When this LED lights up, the device is ready for use.
+DATA | Data lights up when serial data is being sent.
+FAIL| This LED lights up when an error has occurred and the device stops. This can happen, for example, if a USB cable is too long or the wrong power supply is applied.
+
+![Image][6]
+
+## Usage without the Official Softwar
+The device can also be used without the official software. The communication is done via a serial communication which is called [UART][7].  
+
 ## UART Commands
+***
+***
+## Trouble shooting
 
 
 [1]:https://github.com/Krypt0pr0xy/Streufeldkompensation_Official_Software/blob/master/Streufeldkompensation_Official_Software.exe
@@ -50,3 +64,7 @@ In the software you must select the serial port (number 1 from the description) 
 [4]:https://github.com/Krypt0pr0xy/Streufeldkompensation_Official_Software/blob/master/Usage_of_the_Software.md#how-to-connect-the-hardware
 
 [5]:https://github.com/Krypt0pr0xy/Streufeldkompensation/blob/master/DAC-Box-backend.jpg
+
+[6]:https://github.com/Krypt0pr0xy/Streufeldkompensation/blob/master/DAC-Box-frontend.jpg
+
+[7]:https://de.wikipedia.org/wiki/Universal_Asynchronous_Receiver_Transmitter
