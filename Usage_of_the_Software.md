@@ -1,6 +1,7 @@
 # Usage of the Software
 ## This section explains how to use the software.
 `If you only want to use the software without developing the programming further, you can use the already created application.`
+This software has been programmed specifically for the use of the  Streufeldkompensatons project. With it you can communicate with the micro controller via the serial interface. In the normal application, the eight channels can be set and the respective voltage.
 
 # Download
 The software can be downloaded from the following [link][1].
@@ -12,7 +13,9 @@ Please note when the following window opens
 ***
 # Usage
 ***
-![Image][3]
+![Image][3] \
+The offset provides an offset voltage for all channels which can be positive or negative between -100mV and +100mV.
+
 ***
 ## Description:
 Number | Description 
@@ -44,7 +47,7 @@ EN | When this LED lights up, the device is ready for use.
 DATA | Data lights up when serial data is being sent.
 FAIL| This LED lights up when an error has occurred and the device stops. This can happen, for example, if a USB cable is too long or the wrong power supply is applied.
 
-![Image][6]
+![Image][6] 
 
 ## Usage without the Official Softwar
 The device can also be used without the official software. The communication is done via a serial communication which is called [UART][7].  
