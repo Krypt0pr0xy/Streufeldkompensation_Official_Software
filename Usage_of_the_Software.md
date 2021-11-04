@@ -72,6 +72,15 @@ This example shows channel 1 at 0.5V in the +/- 1V range with 270 Ohm output res
 ***
 ***
 ## Trouble shooting
+Problem | Solution approach 
+--- | ---
+Cannot be connected | Have you opened the Seiral port
+COM port is not displayed |  Have you looked in the device manager, otherwise try to install the driver. 
+No LED light | First connect the power supply and then the USB cable.
+Red LED Flashing | Voltage too low use the correct supply voltages and/or a shorter USB cable.
+Voltage can not be adjusted | Check if the communication is present and if you have connected all the power supplies.
+
+
 
 
 [1]:https://github.com/Krypt0pr0xy/Streufeldkompensation_Official_Software/blob/master/Streufeldkompensation_Official_Software.exe
