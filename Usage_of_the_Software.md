@@ -28,11 +28,13 @@ Number | description
  9\. | The textbox is a log for the current status.
  10\. | The Send command is used to transmit the data to de DAC.
 
+## How to Connect Hardware:
 
-## How to Connect SW:
-## How to Connect HW:
+## How to Connect to the Software:
+To get started you need to launch the software, it does not require admin rights. Then connect the USB cable to a free USB port on your computer. Make sure that the DAC box is powered on first. See section: [(How to Connect to Hardware)][4] 
+
 ## LED Status:
-## Use without the Oficial Softwar
+## Usage without the Oficial Softwar
 ## UART Commands
 
 
@@ -41,3 +43,5 @@ Number | description
 [2]:https://github.com/Krypt0pr0xy/Streufeldkompensation_Official_Software/blob/master/WindowsprotectedyourPC.PNG
 
 [3]:https://github.com/Krypt0pr0xy/Streufeldkompensation_Official_Software/blob/master/Official_Software.PNG
+
+[4]:
