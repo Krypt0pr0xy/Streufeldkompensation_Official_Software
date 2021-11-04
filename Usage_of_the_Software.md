@@ -13,6 +13,7 @@ Please note when the following window opens
 ***
 # Usage
 ***
+## Software explanation
 ![Image][3] \
 The offset provides an offset voltage for all channels which can be positive or negative between -100mV and +100mV.
 
