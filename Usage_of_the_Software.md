@@ -15,7 +15,7 @@ Please note when the following window opens
 ![Image][3]
 ***
 ## Description:
-Number | description 
+Number | Description 
 --- | ---
  1\. | Serial port Selection, if you are unsure which port to use, you can open the Device Manager under Windows. 
  2\. | Once you have selected the port, you can open the interface by pressing the Open Port button. 
@@ -48,8 +48,27 @@ FAIL| This LED lights up when an error has occurred and the device stops. This c
 
 ## Usage without the Official Softwar
 The device can also be used without the official software. The communication is done via a serial communication which is called [UART][7].  
+For this you must have a software that connects to the serial port.
+I recommend `putty` you can download the software at the following [link][8].
+Important are the settings of the serial interface.
+Setting | Description 
+--- | ---
+Baudrate | 9600
+DataBits | 8
+Handshake | None
+Parity | None
+StopBits | One
 
 ## UART Commands
+This example shows channel 1 at 0.5V in the +/- 1V range with 270 Ohm output resistance. 
+`SET_CH1_0.5_OUT1_Low` 
++ `SET` is the command for voltage setting. 
+  + `CH1` is for the selection of channels 1-8. 
+  + `0.5` sets the Voltage can be in the (+/- 1V) range between -1 ... 1  and in the +/-10V range between -10 ... 10 
+  + OUT select the Output Range can be `OUT1` => +/-1V or `OUT10` => +/-10V
+  + `Low` sets the out put resistor to 270Ohm and `High` is 2.7kOhm
+
+
 ***
 ***
 ## Trouble shooting
@@ -68,3 +87,5 @@ The device can also be used without the official software. The communication is 
 [6]:https://github.com/Krypt0pr0xy/Streufeldkompensation/blob/master/DAC-Box-frontend.jpg
 
 [7]:https://de.wikipedia.org/wiki/Universal_Asynchronous_Receiver_Transmitter
+
+[8]:https://www.putty.org/
