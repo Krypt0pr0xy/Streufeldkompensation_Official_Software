@@ -12,7 +12,7 @@ After the installation you can [download][1] the project from Github and import 
 ***
 ![image](https://user-images.githubusercontent.com/45595553/107522859-69e78d00-6bb4-11eb-8b2d-66546d49e6da.png)
 ***
-3. After downloading you can unzip the folder. 
+3. After downloading you can unzip the folder. \
 `A new project can be added under File --> Open --> Project.`
 ***
 ![image](https://user-images.githubusercontent.com/45595553/107522911-7835a900-6bb4-11eb-9661-d49d96240180.png)
