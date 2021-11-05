@@ -79,7 +79,7 @@ This example shows channel 1 at 0.5V in the +/- 1V range with 270 Ohm output res
 Problem | Solution approach 
 --- | ---
 Cannot be connected | Have you opened the Seiral port
-COM port is not displayed |  Have you looked in the device manager, otherwise try to install the driver. 
+COM port is not displayed |  Have you looked in the device manager, otherwise try to [install][9] the driver. 
 No LED light | First connect the power supply and then the USB cable.
 Red LED Flashing | Voltage too low use the correct supply voltages and/or a shorter USB cable.
 Voltage can not be adjusted | Check if the communication is present and if you have connected all the power supplies.
@@ -102,3 +102,6 @@ Voltage can not be adjusted | Check if the communication is present and if you h
 [7]:https://de.wikipedia.org/wiki/Universal_Asynchronous_Receiver_Transmitter
 
 [8]:https://www.putty.org/
+
+[9]:https://ftdichip.com/products/ft230xq/
+
