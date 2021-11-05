@@ -1,6 +1,6 @@
 # Streufeldkompensation Official Software
 ***
-## Before you can start you need to download the software this is explained under this section. There is also still explained how to Use the Software
+## Before you can start you need to download the software this is explained under this section. There is also how to use the Software
 [Install and Usage of Official Software][1]
 ***
 ## If you are interested in programming or if you want to develop the software further you can use the following link
