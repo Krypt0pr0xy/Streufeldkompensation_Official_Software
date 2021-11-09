@@ -50,7 +50,7 @@ FAIL| This LED lights up when an error has occurred and the device stops. This c
 
 ![Image][6] 
 
-## Usage without the Official Softwar
+## Usage without the Official Software
 The device can also be used without the official software. The communication is done via a serial communication which is called [UART][7].  
 For this you must have a software that connects to the serial port.
 I recommend `putty` you can download the software at the following [link][8].
