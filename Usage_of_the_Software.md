@@ -72,6 +72,7 @@ This example shows channel 1 at 0.5V in the +/- 1V range with 270 Ohm output res
   + OUT select the Output Range can be `OUT1` => +/-1V or `OUT10` => +/-10V
   + `Low` sets the out put resistor to 270Ohm and `High` is 2.7kOhm
 
+At the end of the command line you need to add a carriage return (`\r`) For more Information about ESCAPE-Controlsequences visit: https://de.wikipedia.org/wiki/Escape-Sequenz
 
 ***
 
