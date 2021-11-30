@@ -6,15 +6,16 @@
 Number | Description 
 --- | ---
  1\. | Input 
- 1a\. | Channel as a `[Int Array]` , Voltage as a `[double array]`
- 1b\. | Visa Open and configure: Visa Refnum -> Comport 
- 2\. | Extract Input Data and check if data is valid else coerce -> Send Data
+ 1a\. | Channel numbers (1-8) as `[Int Array]` , corresponding Voltages (+/-10V) as a `[double array]`. Should be of the same length.
+ 1b\. | Visa Open and configure: Visa Refnum -> COM-port 
+ 2 & 3\. | Loop over input array length
+ 2\. | Check if input data is valid, else coerce -> Send Data
  3a\. | Wait 150ms and know how many Bytes Arrive
  3b\. | Read Port data and appand to String, read for 4 Commandlines
  4a\. | String Output
  4b\. | Port Close
  
-## Example GUI:
+## Corresponding front panel:
 ***
 ![Image][2]
 ***
