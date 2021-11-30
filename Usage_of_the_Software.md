@@ -11,9 +11,10 @@ Please note when the following window opens
 ![Image][2]
 ## Click on **More info** and then on **Run anyway**.
 ***
+# There is also a Labview example under folowing [link][10]
+***
 # Usage
 ***
-## There is also a Labview example under folowing [link][10]
 ## Software explanation
 ![Image][3] \
 The offset provides an offset voltage for all channels which can be positive or negative between -100mV and +100mV.
@@ -107,5 +108,5 @@ Voltage can not be adjusted | Check if the communication is present and if you h
 
 [9]:https://ftdichip.com/products/ft230xq/
 
-[10]:
+[10]:https://github.com/Krypt0pr0xy/Streufeldkompensation_Official_Software/blob/master/use_with_LABVIEW.md
 
