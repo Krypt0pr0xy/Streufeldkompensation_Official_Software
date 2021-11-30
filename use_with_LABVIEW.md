@@ -20,7 +20,7 @@ Number | Description
 ![Image][2]
 ***
 
-## The Example can be Downloaded under: https://github.com/Krypt0pr0xy/Streufeldkompensation_Official_Software/blob/master/set_voltage_channel_StreufeldDACbox.vi
+## The .vi file can be Downloaded under: https://github.com/Krypt0pr0xy/Streufeldkompensation_Official_Software/blob/master/set_voltage_channel_StreufeldDACbox.vi
 
 
 
